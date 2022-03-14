@@ -35,7 +35,6 @@ public class BitExample {
 	    cnt = cnt +1;
 	    cnt += 1;
 	    cnt++;
-	    cnt--l
 	    System.out.println(cnt);
 	    
 	    
