@@ -31,3 +31,4 @@ public class MathExample {
 	}
 
 
+//var = 지수
