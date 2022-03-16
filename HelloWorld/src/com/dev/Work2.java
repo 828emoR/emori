@@ -36,7 +36,7 @@ public class Work2 {
 		}
 		System.out.printf("해당 숫자들의 정렬 결과는" + num1 + ", " + num2 + ", " + num3 + "입니다.");
 			
-		}
 	}
+}
 
 
