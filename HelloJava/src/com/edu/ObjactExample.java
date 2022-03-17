@@ -1,5 +1,6 @@
 package com.edu;
 //Object(객체) -> Class(도면, 틀) -> 인스턴스 생성 (초기화).
+//gkrtod(객체: Object) =>Class Studebt
 public class ObjactExample {
 	public static void main(String[] args) {
 //		int num1 = 10;
@@ -13,7 +14,19 @@ public class ObjactExample {
 	    car1.setModel("sonata");
 	    car1.setPrice(10000000);
 	    
-
+	    
+	    Student s1 = new Student(); // 초기화 시점에 값을 지정
+	    s1.setStudNo(100);
+	    s1.setStudName("이모리");
+	    s1.setKorScore(100);
+	    s1.getEngScore(60);
+	    s1.getMathScore(40);
+	    
+	    System.out.println("영어점수 초기값: " + s1.getEngScore());
+	    System.out.println("이름의 초기값: " + s1.getStudName());
+	    System.out.println(s1.getStudName()+ "의 합계 " + s1.getSumScore());
+	    System.out.println(s1.getStudName()+ "의 평균 " + s1.getAvgScore());
+	    
 	}
 
 }
