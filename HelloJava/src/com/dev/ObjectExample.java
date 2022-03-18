@@ -1,12 +1,17 @@
 package com.dev;
-
+//객체지향프로그램 언어
+//절차프로그램(데이터, 함수) -> 객체(데이터, 기능(함수))
+//Object(객체) -> Class(도면, 틀) -> 인스턴스 생성(초기화)
 import java.util.Scanner;
 
 import com.edu.Student;
 
 public class ObjectExample {
-	public static void main(String[] args) {
-		Scanner scn = new Scanner(System.in);
+	 Scanner scn = new Scanner(System.in);
+	
+	 
+	 public static void main(String[] args) {
+
 
 		Student s1 = new Student(100, "이모리");// studNo = 100
 		System.out.println(s1.getStudNo());
@@ -19,7 +24,7 @@ public class ObjectExample {
 		System.out.printf(s2.getStudName() + "의 평균: %.2f", s2.getAvgScore());
 
 		Student s3 = new Student("해물비빔소스", 102, 80, 100, 92);
-		Student s4 = new Student("톤톤목", 103, 100, 100, 0);
+		Student s4 = new Student("황근출", 103, 100, 100, 0);
 
 		Student[] students = { s1, s2, s3, s4 };
 /////////////////////////////////////////////////////////////////

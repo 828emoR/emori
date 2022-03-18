@@ -7,8 +7,16 @@ public class Account {
 	private String accName;
 	private int money;
 	
-	//constructor: 생성자 목적은 필드의 초기값을 지정.
+	public static String bankname;
+	static {
+		bankname = "모리은행";
+	}
 	
+	public static void showbankName(){
+		System.out.println("모리은행");
+	}
+	//constructor: 생성자 목적은 필드의 초기값을 지정.
+	//같은 생성자를 여러개 만들어 쓸 때 constructor overloading 이라고 한다.
 	public Account(String accNo, String accName, int money) {
 		super();
 		this.accNo = accNo;
@@ -16,6 +24,13 @@ public class Account {
 		this.money = money;
 		
 		
+		
+	}
+	
+	public Account(String accNo, String accName) {
+		super();
+		this.accNo = accNo;
+		this.accName = accName;
 	}
 	
 	//method
