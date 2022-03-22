@@ -1,10 +1,26 @@
 package com.edu.except;
 
 import java.util.InputMismatchException;
+
+//클래스 A, 클래스b 클래스C.....클래스Z
+//클래스 main>main메소드를 포함.
 import java.util.Scanner;
 
 public class libraryExe {
-	public static void main(String[] args) {
+	
+	private static libraryExe singleton = new libraryExe();
+	
+	private libraryExe() {
+		
+	}
+	
+	public static libraryExe getInstance() {
+		return singleton;
+		
+	}
+	
+//	public static void main(String[] args) {
+	public void run() {
 
 		Scanner scn = new Scanner(System.in);
 		Book[] library = new Book[5];
@@ -75,7 +91,7 @@ public class libraryExe {
 		for (int i = 0; i < str.length(); i++) {
 			System.out.print(str.charAt(i));
 			try {
-				Thread.sleep(200);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
