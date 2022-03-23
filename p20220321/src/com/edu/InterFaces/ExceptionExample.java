@@ -1,13 +1,9 @@
 package com.edu.InterFaces;
 
 import java.util.Calendar;
+import java.util.Scanner;
 
-
-Class String2 extends String{
-	public final
-}
-
-
+Class String2 extends String{public final}
 
 public class ExceptionExample {
 	public static void main(String[] args) {
@@ -38,14 +34,17 @@ public class ExceptionExample {
 	    String num2 = "100";
 	    int num1 = Integer.parseInt(num1);// int 변환
 	    int num2 = Integer.parseInt(num2);
-	}catch (NumberFormatException e) {
+	}catch(NumberFormatException e)
+	{
 	num1 = 0;
 	num2 = 0;
-	}catch (Exception2) {
+	}catch(Exception2)
+	{
 	    System.out.println(num1 + " + " (num1 "+" num2 + " = " +(num1 + 1num2));
 	    try {
-	    showError()
+	    showError();
 		System.out.println("end of prog");
+	}
 	}
 	public static void showError(){
 		
@@ -53,6 +52,6 @@ public class ExceptionExample {
 		try {
 			Class not
 		}
-		Class.forName("")
+		Class.forName("");
 }
 }
