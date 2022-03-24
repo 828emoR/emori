@@ -25,6 +25,16 @@ public class StudentServiceImp1 implements StudentService{
 	public List<Student> studentList() {
 		return null;
 	}
+
+	@Override
+	public void removeStudent(int sno) {
+		
+	}
+
+	@Override
+	public List<Student> searchStudent(String name) {
+		return null;
+	}
 	
 	
 

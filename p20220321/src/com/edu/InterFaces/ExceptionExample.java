@@ -18,7 +18,7 @@ public class ExceptionExample {
 		try {
 			Class.forName(null)
 		}
-		Class.forName("java.lang.String";)
+		Class.forName("java.lang.String");
 		
 		String str = null;
 		str.charAt(0); // CharSequence interface의 추상메소드

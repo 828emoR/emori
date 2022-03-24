@@ -17,7 +17,7 @@ public class SetExample {
 		
 		System.out.println("set 크기: " + set.size());
 		
-		Iterator<String> iter = set.iterator(); // 반복
+		Iterator<String> iter = set.iterator(); // 반복자.
 		while(iter.hasNext()) {
 			String result = iter.next();
 			System.out.println(result);
