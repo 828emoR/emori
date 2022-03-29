@@ -1,0 +1,7 @@
+Database System
+-Database : Data를 모아놓은 것.
+-DBMS (Database Management System)
+                :DB를 관리하기 위한(프로그램) 소프트웨어
+Data언어(Sql)
+-컴퓨터(DB Server)
+-User (관리자/개발자/최종사용자)

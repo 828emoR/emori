@@ -14,6 +14,8 @@ public interface StudentService {
 	public void modifyStudent(Student student);//한건등록
 	public void removeStudent(int sno);
 	public List<Student> searchStudent(String name);
+	public void saveToFile();
+	
 
 }
 
