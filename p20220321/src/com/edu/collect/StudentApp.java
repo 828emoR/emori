@@ -1,4 +1,4 @@
-package com.edu.api;
+package com.edu.collect;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -10,7 +10,6 @@ import java.util.Scanner;
 import com.edu.collect.Student;
 import com.edu.collect.StudentService;
 import com.edu.collect.StudentServiceFile;
-import com.edu.collect.StudentServiceOracle;
 
 public class StudentApp {
 	// ↓필드
@@ -105,12 +104,11 @@ public class StudentApp {
 		}
 	// 메인 기능을 담당하는 execute()
 			public void execute() {
-				StudentService service = null;
-//				               service = new StudentServiceImpl();// 메인 기능을 하는 메소드.
-//				               service = new StudentServiceFile();
+				StudentService service = null; 
+//							   service = new StudentServiceImpl();// 메인 기능을 하는 메소드.
+//				               service = new StudentServiceFile();// <-로 바꾸겠습니다.
 				               service = new StudentServiceOracle();
-				               // <-로 바꾸겠습니다.
-				// ();//<-로 바꾸겠습니다.
+				// service = new StudentServuceOracle();//<-로 바꾸겠습니다.
 				// 추가 2.리스트 3.학생 번호로 조회 4.이름으로 조회 5.수정 6.삭제 9. 종료
 				while (true) {
 					System.out.println("1.추가 2.리스트 3.학생 번호로 조회 4.이름으로 조회 5.수정 6.삭제 9. 종료");
@@ -168,15 +166,15 @@ public class StudentApp {
 
 					} else if (menu == 5) {// 수정정보 입력
 
+						System.out.println("수정 할 학생번호를 입력하세요.");
+						int stuNo = scn.nextInt();
+
 						System.out.println("영어점수 입력");
 						int engScore = scn.nextInt();
 
 						System.out.println("국어점수 입력");
 						int korScore = scn.nextInt();
-						
-						System.out.println("수정 할 학생번호를 입력하세요.");
-						int stuNo = scn.nextInt();
-						
+
 						Student s1 = new Student(stuNo, null, engScore, korScore);
 						service.modifyStudent(s1);
 						System.out.println("처리가 완료되었습니다.");

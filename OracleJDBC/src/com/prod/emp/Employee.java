@@ -9,12 +9,18 @@ public class Employee {
 	private int salary;       //emplpoyees.salary
 	private String hireDate;  //emplpoyees.hireDate
 	private String jobId;     //emplpoyees.jobId
+	private String phoneNumber;
 	
 	
 	
 	
 	
-	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public int getEmployeeId() {
 		return employeeId;
 	}

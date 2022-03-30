@@ -1,12 +1,22 @@
 package com.edu.collect;
 //참조, 라이브러리 용도 
-public class Student {
+
+import java.io.Serializable;
+
+public class Student implements Serializable{
+	
+	private int stuNo;
+	private String stuName;
+	private int engScore;
+	private int koScore;
+
+
+
+
+public Student () {
 	//학생번호(int 타입을 이용한 학생번호 1, 2, 3/ 이름 (홍길동),영어점수(80), 국어(70), 
 	
-	int stuNo;
-	String stuName;
-	int engScore;
-	int koScore;
+}
 	
 	
 	@Override
