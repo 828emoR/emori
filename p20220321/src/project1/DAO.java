@@ -1,4 +1,4 @@
-package com.edu.collect;
+package project1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class DAO {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("성공적으로 연결되었습니다.");
+		System.out.println("앙 성공띠");
 		return conn;
 	}
 
