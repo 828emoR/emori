@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 
+
+
 //학생정보등록 기능 작성
 //학생 정보 수정기능 작성.
 //학생 리스트를 출력하는 기능 작성
@@ -41,6 +43,7 @@ public class StudentApp {
 	}
 
 	public void execute() {
+
 
 		StudentService service = new StudentServiceImpl();
 

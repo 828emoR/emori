@@ -35,4 +35,6 @@ public class Student {
 		return "Student [studNo=" + StudNo + ", studName=" + StudName + "]";
 	}
 
+
+
 }
