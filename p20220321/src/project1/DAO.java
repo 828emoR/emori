@@ -26,7 +26,7 @@ public class DAO {
 		System.out.println("앙 성공띠");
 		return conn;
 	}
-
+  
 	public void disconnect() {
 
 		try {

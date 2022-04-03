@@ -16,7 +16,7 @@ public class BoardMember implements Serializable{
 		
 	}
 	
-	
+	  
 	
 	
 	public BoardMember(String id, String pw, String name, String gender, String birth, String email, String tel) {

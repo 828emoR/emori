@@ -18,7 +18,7 @@ public class BoardApp {
 
 	// 생성자
 	public BoardApp() {// 기본 생성자
-
+  
 	}
 
 	// 멤버클래스.

@@ -9,3 +9,4 @@ public interface BoardMemberService {
 	public void modifyBoard(BoardMember board2);
 	public List<BoardMember> searchBoard(String name2);
 }
+  

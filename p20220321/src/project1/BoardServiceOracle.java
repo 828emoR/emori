@@ -30,7 +30,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService {
 
 			psmt.setString(7, board2.getTel());
 
-			psmt.executeUpdate();
+			psmt.executeUpdate();  
 
 			System.out.println("정상입력 완료");
 
