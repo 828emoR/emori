@@ -5,13 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BoardServiceOracle extends DAO implements BoardMemberService, BoardService {
+import com.edu.collect.Student;
+
+public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*BoardService*/ {
 	Scanner scn = new Scanner(System.in);
 
 	@Override
 	public void insertBoardMember(BoardMember board2) {// 입력처리
 		conn = getConnect();
-		String sql = "insert into ProjectMember (id,pw,name,gender,birth,email,tel) " + "values ( ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into ProjectMember (id, pw, name, gender, birth, email, tel) " + "values (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -42,7 +44,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public List<BoardMember> searchBoard(String name2) {// 한건 조회
+	public List<BoardMember> searchBoardMember(String name2) {// 한건 조회
 		conn = getConnect();
 		List<BoardMember> list = new ArrayList<BoardMember>();
 		String sql = "select * " + "from ProjectMember " + "where name like '%'||?||'%'";
@@ -72,7 +74,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public List<BoardMember> board2List() {// 전체회원출력
+	public List<BoardMember> boardMemList() {// 전체회원출력
 		List<BoardMember> list = new ArrayList<BoardMember>();// 조회된 결과값을 담기위한 컬렉션.
 
 		conn = getConnect();
@@ -139,56 +141,44 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public void insertBoard(Board board) {
-		conn = getConnect();
-		String sql = "insert into ProjectMember (id,pw,name,gender,birth,email,tel) " + "values ( ?, ?, ?, ?, ?, ?, ?)";
-
-		try {
-			psmt = conn.prepareStatement(sql);
-
-			psmt.setInt(1, board.getNo());
-
-			psmt.setString(2, board.getTitle());
-
-			psmt.setString(3, board.getContent());
-
-			psmt.setString(4, board.getWriter());
-
-			psmt.setString(5, board.getRegisteredDate());
-
-			psmt.setString(6, board.getTel());
-
-			psmt.executeUpdate();
-
-			System.out.println("정상입력 완료");
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-
-	}
-
-	@Override
-	public Board getBoard(int no) {
+	public Board getBoardMember(int Bno) {
 		return null;
+	}// ----------보드멤버 끝------------
+
+//	@Override
+//	public void insertBoard(Board board) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public Board getBoard(int no) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public List<Board> boardList() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public void modifyBoard(Board board) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public void removeBoard(int no) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public List<Board> searchBoard(String name) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
 	}
-
-	@Override
-	public List<Board> boardList() {
-		return null;
-	}
-
-	@Override
-	public void modifyBoard(Board board) {
-
-	}
-
-	@Override
-	public void removeBoard(int no) {
-
-	}
-
-
-}

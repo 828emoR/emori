@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.edu.collect.Student;
-import com.edu.collect.StudentService;
-import com.edu.collect.StudentServiceFile;
 
 public class StudentApp {
 	// ↓필드

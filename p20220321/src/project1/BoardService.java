@@ -16,7 +16,7 @@ public interface BoardService {
 	public void removeBoard(int no);
 	public List<Board> searchBoard(String name);
 	
-
+  
 }
 
   

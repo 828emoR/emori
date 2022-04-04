@@ -12,6 +12,13 @@ public class BoardMember implements Serializable{
 	private String email;
 	private String tel;
 	
+	
+	
+
+
+
+
+
 	public BoardMember() {
 		
 	}
@@ -20,7 +27,7 @@ public class BoardMember implements Serializable{
 	
 	
 	public BoardMember(String id, String pw, String name, String gender, String birth, String email, String tel) {
-		super();
+
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
