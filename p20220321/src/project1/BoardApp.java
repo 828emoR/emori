@@ -18,26 +18,26 @@ public class BoardApp {
 
 	// 생성자
 	public BoardApp() {// 기본 생성자
-  
+
 	}
 
 	// 멤버클래스.
-	class BoardServiceImpl implements BoardMemberService {
+	class BoardMemberServiceImpl implements BoardMemberService {
 		List<BoardMember> list = new ArrayList<BoardMember>();
 
 		@Override
-		public void insertBoard(BoardMember board2) {//회원정보 입력
+		public void insertBoardMember(BoardMember board2) {// 회원정보 입력
 			list.add(board2);
 
 		}
 
 		@Override
-		public List<BoardMember> board2List() {//리스트 출력
+		public List<BoardMember> board2List() {// 리스트 출력
 			return list;
 		}
 
 		@Override
-		public void removeBoard(String name2) {//삭제
+		public void removeBoardMember(String name2) {// 삭제
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getId() == name2) {
 					list.remove(list.get(i).getId());
@@ -46,7 +46,7 @@ public class BoardApp {
 		}
 
 		@Override
-		public void modifyBoard(BoardMember board2) {//수정
+		public void modifyBoardMember(BoardMember board2) {// 수정
 			for (int i = 0; i < list.size(); i++) {
 				if (list.get(i).getId() == board2.getId()) {
 					list.get(i).setEmail(board2.getEmail());
@@ -57,7 +57,7 @@ public class BoardApp {
 		}
 
 		@Override
-		public List<BoardMember> searchBoard(String name2) {//한건찾기
+		public List<BoardMember> searchBoard(String name2) {// 한건찾기
 			List<BoardMember> searchBoard = new ArrayList<BoardMember>();
 			for (int i = 0; i < list.size(); i++) {
 
@@ -70,8 +70,7 @@ public class BoardApp {
 
 		}// 끝
 
-
-	// 메인 기능을 담당하는 execute()
+		// 메인 기능을 담당하는 execute()
 	public void execute() {
 		     BoardServiceOracle service = null;
 //							   service = new StudentServiceImpl();// 메인 기능을 하는 메소드.
@@ -169,4 +168,5 @@ public class BoardApp {
 		System.out.println("EOP");
 	}
 
+	}
 }

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BoardServiceOracle extends DAO implements BoardMemberService {
+public class BoardServiceOracle extends DAO implements BoardMemberService, BoardService {
 	Scanner scn = new Scanner(System.in);
 
 	@Override
-	public void insertBoard(BoardMember board2) {// 입력처리
+	public void insertBoardMember(BoardMember board2) {// 입력처리
 		conn = getConnect();
-		String sql = "insert into ProjectMember (id,pw,name,gender,birth,email,tel) " + "values ( ?, ?, ?, ?)";
+		String sql = "insert into ProjectMember (id,pw,name,gender,birth,email,tel) " + "values ( ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -30,7 +30,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService {
 
 			psmt.setString(7, board2.getTel());
 
-			psmt.executeUpdate();  
+			psmt.executeUpdate();
 
 			System.out.println("정상입력 완료");
 
@@ -97,7 +97,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService {
 	}
 
 	@Override
-	public void modifyBoard(BoardMember board2) {// 회원정보 수정
+	public void modifyBoardMember(BoardMember board2) {// 회원정보 수정
 		conn = getConnect();
 		String sql = "UPDATE ProjectMember " + "SET name = ? " + "email = ? " + "tel = ? " + "where id = ?";
 		try {
@@ -120,7 +120,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService {
 	}
 
 	@Override
-	public void removeBoard(String name2) {
+	public void removeBoardMember(String name2) {
 		conn = getConnect();
 		String sql = "delete from ProjectMember" + "where id = ? ";
 
@@ -137,5 +137,58 @@ public class BoardServiceOracle extends DAO implements BoardMemberService {
 		}
 
 	}
+
+	@Override
+	public void insertBoard(Board board) {
+		conn = getConnect();
+		String sql = "insert into ProjectMember (id,pw,name,gender,birth,email,tel) " + "values ( ?, ?, ?, ?, ?, ?, ?)";
+
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setInt(1, board.getNo());
+
+			psmt.setString(2, board.getTitle());
+
+			psmt.setString(3, board.getContent());
+
+			psmt.setString(4, board.getWriter());
+
+			psmt.setString(5, board.getRegisteredDate());
+
+			psmt.setString(6, board.getTel());
+
+			psmt.executeUpdate();
+
+			System.out.println("정상입력 완료");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+
+	}
+
+	@Override
+	public Board getBoard(int no) {
+		return null;
+	}
+
+	@Override
+	public List<Board> boardList() {
+		return null;
+	}
+
+	@Override
+	public void modifyBoard(Board board) {
+
+	}
+
+	@Override
+	public void removeBoard(int no) {
+
+	}
+
 
 }

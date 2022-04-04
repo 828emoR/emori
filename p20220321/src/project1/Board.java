@@ -10,8 +10,8 @@ public class Board implements Serializable {
 	private int no;
 	private String title;
 	private String content;
-	private Member writer;
-	private Date registeredDate;
+	private String writer;
+	private String registeredDate;
 	private int viewCount;
 	private int like;
 	private String reason;
@@ -22,7 +22,7 @@ public class Board implements Serializable {
 	
 	
 	
-	public Board(int no, String title, String content, Member writer, Date registeredDate, int viewCount, int like,
+	public Board(int no, String title, String content, String writer, Date registeredDate, int viewCount, int like,
 			String reason, String requester) {
 		super();
 		this.no = no;
@@ -62,19 +62,19 @@ public class Board implements Serializable {
 		this.content = content;
 	}
 
-	public Member getWriter() {
+	public String getWriter() {
 		return writer;
 	}
 
-	public void setWriter(Member writer) {
+	public void setWriter(String writer) {
 		this.writer = writer;
 	}
 
-	public Date getRegisteredDate() {
+	public String getRegisteredDate() {
 		return registeredDate;
 	}
 
-	public void setRegisteredDate(Date registeredDate) {
+	public void setRegisteredDate(String registeredDate) {
 		this.registeredDate = registeredDate;
 	}
 
