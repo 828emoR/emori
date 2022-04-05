@@ -2,7 +2,6 @@ package project1;
 //참조, 라이브러리 용도 
 
 import java.io.Serializable;
-import java.lang.reflect.Member;
 import java.util.Date;
 
 public class Board implements Serializable {

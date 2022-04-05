@@ -13,7 +13,8 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 	@Override
 	public void insertBoardMember(BoardMember board2) {// 입력처리
 		conn = getConnect();
-		String sql = "insert into ProjectMember (id, pw, name, gender, birth, email, tel) " + "values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into projectmember(id, pw, name, gender, birth, email, tel) \r\n"
+				+ "values (board_mem_seq.nextval, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -44,14 +45,14 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 	}
 
 	@Override
-	public List<BoardMember> searchBoardMember(String name2) {// 한건 조회
+	public List<BoardMember> searchBoardMember(int Bno) {// 한건 조회
 		conn = getConnect();
 		List<BoardMember> list = new ArrayList<BoardMember>();
 		String sql = "select * " + "from ProjectMember " + "where name like '%'||?||'%'";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, name2);
+			psmt.setInt(1, Bno);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				BoardMember Bom = new BoardMember();
@@ -122,22 +123,26 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 	}
 
 	@Override
-	public void removeBoardMember(String name2) {
-		conn = getConnect();
-		String sql = "delete from ProjectMember" + "where id = ? ";
+	public void removeBoardMember(int Bno) {
+		  conn = getConnect();
+	      String sql = "delete from projectmember " + "where id = ?";
+	      try {
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setInt(1, Bno);
+	         int r = psmt.executeUpdate(); // 실행
+	         System.out.println(r + "건 삭제완료.");
+	      } catch (SQLException e) {
 
-		try {
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, name2);
+	         e.printStackTrace();
+	      } finally {
+	         disconnect();
+	      }
 
-			psmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-
+	   }
+		
+	@Override
+	public void loginBoardMember(BoardMember login) {
+		
 	}
 
 	@Override
@@ -145,40 +150,35 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 		return null;
 	}// ----------보드멤버 끝------------
 
-//	@Override
-//	public void insertBoard(Board board) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public Board getBoard(int no) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public List<Board> boardList() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void modifyBoard(Board board) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void removeBoard(int no) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public List<Board> searchBoard(String name) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
+
+	@Override
+	public void insertBoard(Board board) {
+		
+	}
+
+	@Override
+	public Board getBoard(int no) {
+		return null;
+	}
+
+	@Override
+	public List<Board> boardList() {
+		return null;
+	}
+
+	@Override
+	public void modifyBoard(Board board) {
+		
+	}
+
+	@Override
+	public void removeBoard(int no) {
+		
+	}
+
+	@Override
+	public List<Board> searchBoard(String name) {
+		return null;
+	}//----------------게시판 작성 끝------------------
+
 	}

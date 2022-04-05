@@ -1,7 +1,5 @@
 package project1;
 
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -32,11 +30,10 @@ public class BoardApp {
 		}
 
 		@Override
-		public void removeBoardMember(String name2) {// 삭제
+		public void removeBoardMember(int Bno) {// 삭제
 			List<BoardMember> searchBoardMember = new ArrayList<BoardMember>();
 			for (int i = 0; i < list.size(); i++) {
-
-				if (list.get(i).getName().equals(name2)) {
+				if (list.get(i).getName().equals(Bno)) {
 					searchBoardMember.remove(list.get(i));
 				}
 			}
@@ -54,11 +51,11 @@ public class BoardApp {
 		}
 
 		@Override
-		public List<BoardMember> searchBoardMember(String name2) {// 한건찾기
+		public List<BoardMember> searchBoardMember(int Bno) {// 한건찾기
 			List<BoardMember> searchBoard = new ArrayList<BoardMember>();
 			for (int i = 0; i < list.size(); i++) {
 
-				if (list.get(i).getId().equals(name2)) {
+				if (list.get(i).getId().equals(Bno)) {
 					searchBoard.add(list.get(i));
 
 				}
@@ -72,6 +69,15 @@ public class BoardApp {
 		
 			return null;
 		}
+
+		@Override
+		public void loginBoardMember(BoardMember login) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
 	}
 
 	// 메인 기능을 담당하는 execute()
@@ -83,15 +89,14 @@ public class BoardApp {
 							   
 		// service = new StudentServuceOracle();//<-로 바꾸겠습니다.
 		while (true) {
-			System.out.println("1.회원가입 2.리스트 3.ID 번호로 조회 4.닉네임으로 조회 5.수정 6.삭제 9. 종료");
+			System.out.println("1.회원가입 2.리스트 3.ID 번호로 조회 4.수정 5.삭제 9. 종료");
 			System.out.println("선택>>");
 
 			int menu = scn.nextInt();
 
 			if (menu == 1) {
 				
-				 System.out.println("사용할 Id 를 입력하세요.");
-				 String id = scn.next();
+				 
 				 System.out.println("비밀번호를 입력하세요.");
 				 String pw = scn.next();
 				 System.out.println("사용할 닉네임을 입력하세요.");
@@ -105,7 +110,7 @@ public class BoardApp {
 				 System.out.println("전화번호를 입력하세요.");
 				 String tel = scn.next();
 				 
-				BoardMember s1 = new BoardMember(id, pw, name, gender, birth, email, tel);
+				BoardMember s1 = new BoardMember(null, pw, name, gender, birth, email, tel);
 				service.insertBoardMember(s1);
 
 			} else if (menu == 2) {
@@ -127,19 +132,12 @@ public class BoardApp {
 					System.out.println(board.toString());
 				}
 
-			} else if (menu == 4) {
-				System.out.println("조회할 닉네임 입력");
-				String name = scn.next();
-				List<BoardMember> searchBoardMember = service.searchBoardMember(name);
-
-				if (name == null) {
-					System.out.println("정보없음");
-				} else {
-					System.out.println(searchBoardMember);
-				}
-
-			} else if (menu == 5) {// 수정정보 입력
-
+	
+			} else if (menu == 4) {// 수정정보 입력
+				
+				System.out.println("수정할 대상의 ID 번호 입력");
+				int MoNo = scn.nextInt();
+				
 				System.out.println("수정 할 닉네임 입력");
 				String name = scn.next();
 
@@ -153,21 +151,22 @@ public class BoardApp {
 				service.modifyBoardMember(s1);
 				System.out.println("처리가 완료되었습니다.");
 
-			} else if (menu == 6) {
+			} else if (menu == 5) {
+				System.out.println("삭제할 ID 번호를 입력하세요");
+			int Bno = scn.nextInt();
 
-				System.out.println("삭제할 닉네임을 입력하세요");
-				String Rename = scn.next();
-
-				service.removeBoardMember(Rename);
-				System.out.println("처리가 완료되었습니다.");
-
+			service.removeBoardMember(Bno);
+			System.out.println("처리가 완료되었습니다.");
+			
+			
 			} else if (menu == 9) {
 				System.out.println("시스템을 종료합니다.");
 				break;
 			}
 
+	
 		} // while 끝
-		System.out.println("EOP");
+        System.out.println("EOP");
+        
 	}
-
 }
