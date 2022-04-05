@@ -10,7 +10,7 @@ public interface BoardMemberService {
 	public void removeBoardMember(int Bno);
 	public void modifyBoardMember(BoardMember board2);
 	public List<BoardMember> searchBoardMember(int Bno);
-	public void loginBoardMember (BoardMember login);
+	
 	
 }
   

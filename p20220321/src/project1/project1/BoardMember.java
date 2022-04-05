@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class BoardMember implements Serializable{
 
-	private String id;
+	private int id;
 	private String pw;
 	private String name;
 	private String gender;
@@ -26,7 +26,7 @@ public class BoardMember implements Serializable{
 	  
 	
 	
-	public BoardMember(String id, String pw, String name, String gender, String birth, String email, String tel) {
+	public BoardMember(int id, String pw, String name, String gender, String birth, String email, String tel) {
 
 		this.id = id;
 		this.pw = pw;
@@ -40,13 +40,13 @@ public class BoardMember implements Serializable{
 
 
 
-	public String getId() {
+	public int getId() {
 
 		return id;
 
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 
 		this.id = id;
 

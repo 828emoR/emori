@@ -15,19 +15,38 @@ public class DAO {
 	Statement stmt = null;
 	ResultSet rs = null;
 	PreparedStatement psmt;
+	
 
 	public Connection getConnect() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "hr", "hr");
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		System.out.println("앙 성공띠");
 		return conn;
 	}
+	
+	  public int login(String id, String pw) {
+		  String sql = "SELECT Password FROM projectmember WHERE Memberid = ?";
+		  try {
+			  if(rs.next()) {
+				  if(rs.getString(1).contentEquals(pw)) {
+					  return 1;
+				  }else {
+					  return 0;
+				  }
+			  }
+			  return -1;
+		  }catch (Exception e) {
+			  e.printStackTrace();
+		  }
+		  return -2;
+	  }
   
-	public void disconnect() {
+  public void disconnect() {
 
 		try {
 			if (rs != null)

@@ -15,8 +15,6 @@ public interface BoardService {
 	public void modifyBoard(Board board);//한건등록
 	public void removeBoard(int no);
 	public List<Board> searchBoard(String name);
-	
-  
 }
 
   

@@ -13,13 +13,11 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 	@Override
 	public void insertBoardMember(BoardMember board2) {// 입력처리
 		conn = getConnect();
-		String sql = "insert into projectmember(id, pw, name, gender, birth, email, tel) \r\n"
+		String sql = "insert into projectmember(Memberid, Password, Nickname, gender, birth, email, tel) \r\n"
 				+ "values (board_mem_seq.nextval, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-
-			psmt.setString(1, board2.getId());
 
 			psmt.setString(2, board2.getPw());
 
@@ -57,7 +55,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 			while (rs.next()) {
 				BoardMember Bom = new BoardMember();
 
-				Bom.setId(rs.getString("id"));
+				Bom.setId(rs.getInt("id"));
 				Bom.setName(rs.getString("name"));
 				Bom.setEmail(rs.getString("email"));
 				Bom.setTel(rs.getString("tel"));
@@ -109,7 +107,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 			psmt.setString(1, board2.getName());
 			psmt.setString(2, board2.getEmail());
 			psmt.setString(3, board2.getTel());
-			psmt.setString(4, board2.getId());
+			psmt.setInt(4, board2.getId());
 
 			int r = psmt.executeUpdate();
 
@@ -140,10 +138,9 @@ public class BoardServiceOracle extends DAO implements BoardMemberService/*, /*B
 
 	   }
 		
-	@Override
-	public void loginBoardMember(BoardMember login) {
-		
-	}
+
+
+	
 
 	@Override
 	public Board getBoardMember(int Bno) {
