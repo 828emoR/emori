@@ -1,8 +1,9 @@
 package project1;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class BoardMember implements Serializable{
+public class BoardMember implements Serializable {
 
 	private int id;
 	private String pw;
@@ -11,21 +12,13 @@ public class BoardMember implements Serializable{
 	private String birth;
 	private String email;
 	private String tel;
-	
-	
-	
 
+	private int BoardNo;
+	private String title;
+	private String content;
+	private Date regdate;
+	private String reply;
 
-
-
-
-	public BoardMember() {
-		
-	}
-	
-	  
-	
-	
 	public BoardMember(int id, String pw, String name, String gender, String birth, String email, String tel) {
 
 		this.id = id;
@@ -36,9 +29,75 @@ public class BoardMember implements Serializable{
 		this.email = email;
 		this.tel = tel;
 	}
+	
+	public BoardMember(int boardNo, String name, String title, String content, Date regdate) {
+		
+		BoardNo = boardNo;
+		this.name = name;
+		this.title = title;
+		this.content = content;
+		this.regdate = regdate;
 
+	}
 
+	@Override
 
+	public String toString() {
+
+		String str = String.format("아이디:%s \n이름:%s \n성별:%s \n생일:%s \n이메일:%s \n번호:%s \n",
+
+				id, name, gender, birth, email, tel);
+
+		return str;
+
+	}
+	
+	
+	public BoardMember() {
+
+	}
+
+	public int getBoardNo() {
+		return BoardNo;
+	}
+
+	public void setBoardNo(int boardNo) {
+		BoardNo = boardNo;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+
+	public String getReply() {
+		return reply;
+	}
+
+	public void setReply(String reply) {
+		this.reply = reply;
+	}
+
+	
 
 	public int getId() {
 
@@ -124,16 +183,6 @@ public class BoardMember implements Serializable{
 
 	}
 
-	@Override
 
-	public String toString() {
-
-		String str = String.format("아이디:%s \n이름:%s \n성별:%s \n생일:%s \n이메일:%s \n번호:%s \n",
-
-				id, name, gender, birth, email, tel);
-
-		return str;
-
-	}
 
 }

@@ -9,12 +9,21 @@ import java.util.List;
 
 public interface BoardService {
 	
-	public void insertBoard(BoardWrite board);//게시판 입력
-	public BoardWrite getBoard(int no);//한건 조회
-	public List<BoardWrite> boardList();//게시판 전체목록
-	public void modifyBoard(BoardWrite board);//수정
+	public void insertBoard(BoardMember board);//게시판 입력
+	public BoardMember getBoard(int no);//한건 조회
+	public List<BoardMember> boardList();//게시판 전체목록
+	public void modifyBoard(BoardMember board);//수정
 	public void removeBoard(int no);
-	public List<BoardWrite> searchBoard(String name);
+	public List<BoardMember> searchBoard(int Bwno);
+	
+	
+	public void insertBoardMember(BoardMember board);//회원정보 입력
+	public List<BoardMember> boardMemList();//회원정보 전체목록
+	public BoardMember getBoardMember(int Bno);//한건 조회
+	public void removeBoardMember(int Bno);
+	public void modifyBoardMember(BoardMember board);
+	public List<BoardMember> searchBoardMember(int Bno);
+	public int login(int id, String pw);
 }
 
   

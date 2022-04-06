@@ -1,17 +1,18 @@
 package project1;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BoardServiceOracle extends DAO implements BoardMemberService, BoardService {
+public class BoardServiceOracle extends DAO implements BoardService {
 	Scanner scn = new Scanner(System.in);
 
 	@Override
 	public void insertBoardMember(BoardMember board2) {// 입력처리
 		conn = getConnect();
-		String sql = "insert into projectmember(id, Pw, name, gender, birth, email, tel) \r\n"
+		String sql = "insert into projectmember(id, Pw ,name, gender, birth, email, tel) "
 				+ "values (board_mem_seq.nextval, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -31,7 +32,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 
 			psmt.executeUpdate();
 
-			System.out.println("정상입력 완료");
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -139,7 +140,7 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public int login(int id, String pw) {
+	public int login(int id, String pw) {//로그인
 		conn = getConnect();// DB연동시작
 
 		String sql = "SELECT * FROM projectmember WHERE id = ? AND Pw = ?";
@@ -164,22 +165,19 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public BoardWrite getBoardMember(int Bno) {
+	public BoardMember getBoardMember(int Bno) {
 		return null;
 	}// ----------보드멤버 끝------------
 
 	@Override
-	public void insertBoard(BoardWrite board) {
+	public void insertBoard(BoardMember board) {
 		conn = getConnect();
-		String sql = "insert into project_board_001(boardno, title, contents, writer) \r\n"
-				+ "values (board_seq.nextval, '테스트 제목', '내가', '글쓴이')";
+		String sql = "insert into project_board_001(boardno, title, contents, writer, regdate) \r\n"
+				+ "values (board_seq.nextval, ?, ?, ?, sysdate)";
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, board.getBoardNo());
-			psmt.setString(2, board.getTitle());
-			psmt.setString(3, board.getContent());
-			psmt.setString(4, board.getWriter());
+
 
 			psmt.executeUpdate();
 
@@ -191,28 +189,31 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public BoardWrite getBoard(int no) {
+	public BoardMember getBoard(int no) {
 		return null;
 	}
 
 	@Override
-	public List<BoardWrite> boardList() {// 한건(보드번)으로 조회
-		List<BoardWrite> list = new ArrayList<BoardWrite>();
+	public List<BoardMember> searchBoard(int Bwno) {// 한건(보드번)으로 조회
+		List<BoardMember> list = new ArrayList<BoardMember>();
 		String sql = "SELECT * " + "FROM project_board_001 " + "WHERE boardno = ? ";
 
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, Bwno);
 			rs = psmt.executeQuery();// 실행건수만큼 반복자
 			while (rs.next()) {// 반복자를 통해 요소를 가지고 올 수 있는치 체크. 있으면 하나
-				BoardWrite boardW = new BoardWrite();
+				BoardMember bw = new BoardMember();
+				
 
-				boardW.setBoardNo(rs.getInt("boardno"));
-				boardW.setContent(rs.getString("contents"));
-				boardW.setTitle(rs.getString("title"));
-				boardW.setWriter(rs.getString("Writer"));
-				boardW.setRegdate(rs.getDate("regdate date default sysdate"));
+				
+				psmt.executeUpdate();
+				
+				list.add(bw);
+				
+				return list;
+				
 
-				list.add(boardW);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -221,15 +222,14 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public void modifyBoard(BoardWrite board) {
+	public void modifyBoard(BoardMember board) {
 		conn = getConnect();
 		String sql = "update project_board_001 " + "		Set title = ? " + "		    contents = ? "
 				+ "		Where boardno = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, board.getTitle());
-			psmt.setString(2, board.getContent());
+
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -256,23 +256,16 @@ public class BoardServiceOracle extends DAO implements BoardMemberService, Board
 	}
 
 	@Override
-	public List<BoardWrite> searchBoard(String name) {
-		List<BoardWrite> list = new ArrayList<BoardWrite>();
+	public List<BoardMember> boardList() {//전체조회
+		List<BoardMember> list = new ArrayList<BoardMember>();
 		String sql = "SELECT * " + "FROM project_board_001 ";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();// 실행건수만큼 반복자
 			while (rs.next()) {// 반복자를 통해 요소를 가지고 올 수 있는치 체크. 있으면 하나
-				BoardWrite boardW = new BoardWrite();
 
-				boardW.setBoardNo(rs.getInt("boardno"));
-				boardW.setContent(rs.getString("contents"));
-				boardW.setTitle(rs.getString("title"));
-				boardW.setWriter(rs.getString("Writer"));
-				boardW.setRegdate(rs.getDate("regdate date default sysdate"));
-
-				list.add(boardW);
+	
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
