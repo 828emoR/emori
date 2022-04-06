@@ -25,26 +25,11 @@ public class DAO {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("앙 성공띠");
+		System.out.println("서버 DB에 정상접속 되었습니다");
 		return conn;
 	}
 	
-	  public int login(String id, String pw) {
-		  String sql = "SELECT Password FROM projectmember WHERE Memberid = ?";
-		  try {
-			  if(rs.next()) {
-				  if(rs.getString(1).contentEquals(pw)) {
-					  return 1;
-				  }else {
-					  return 0;
-				  }
-			  }
-			  return -1;
-		  }catch (Exception e) {
-			  e.printStackTrace();
-		  }
-		  return -2;
-	  }
+	  
   
   public void disconnect() {
 
