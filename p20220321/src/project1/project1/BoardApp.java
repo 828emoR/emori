@@ -10,7 +10,7 @@ public class BoardApp {
 
 	Scanner scn = new Scanner(System.in);
 	List<BoardMember> list = new ArrayList<BoardMember>();
-
+	static int UserNo = 0;
 	// 생성자
 	public BoardApp() {// 기본 생성자
 
@@ -34,8 +34,10 @@ public class BoardApp {
 		
 		while (true) {
 			System.out.println(
-					"------------------------------------------------------" + "\r\n" + "                       "
-							+ "자유게시판\r\n" + "------------------------------------------------------");
+					"------------------------------------------------------" 
+			+ "\r\n" 
+							+ "                       "+ "자유게시판\r\n"
+			+ "------------------------------------------------------");
 
 			System.out.println("------------------------------------------------------"
 					+ "\r\n   1 회원가입	       2 로그인		  3.나가기	"
@@ -67,14 +69,26 @@ public class BoardApp {
 				service.insertBoardMember(s1);
 
 				System.out.println("회원가입이 완료되었습니다!");
-
+				int id = service.userCheck(tel);
+			
+				System.out.println("  ┌───────────────────────────────────────────────────┐");
+				System.out.println("  |  가입하신 계정의 id는 " + id +" 입니다. 잊어버리지 않게 주의해주세요! │");
+				System.out.println("  └──────────────────────┐"+ "  ┌─────────────────────────┘");
+				System.out.println("                         |"+" /");
+				System.out.println("\t\t  *゜   (\\__(\\\r\n"
+								 + "\t\t   c(⌒(_*´ㅅ`)_\r\n"
+								 	+ "");
+				
 				continue;
 
 			} else if (menu == 2) {// 로그인 호출
-
-				System.out.println("아이디 입력");
+				System.out.println("\r\n===========");
+				System.out.println("아이디 입력 >>");
+				System.out.println("===========\r\n");
 				int id = scn.nextInt();
-				System.out.println("비밀번호");
+				System.out.println("\r\n============");
+				System.out.println("비밀번호 입력>>");
+				System.out.println("=============\r\n");
 				String pw = scn.next();
 
 				int result = service.login(id, pw);
@@ -99,8 +113,9 @@ public class BoardApp {
 						if (menu == 1) {
 
 							System.out.println("회원 정보를 입력해주세요");
-
-							System.out.println("조회할 ID번호 입력");
+							System.out.println("\r\n=============");
+							System.out.println("조회할 ID번호 입력 >>");
+							System.out.println("=================\r\n");
 							int BoardId = scn.nextInt();
 							list = service.searchBoardMember(BoardId);
 
@@ -136,8 +151,9 @@ public class BoardApp {
 							System.out.println("처리가 완료되었습니다.");
 
 						} else if (menu == 3) {// 회원삭제
-							int Bno = scn.nextInt();
+							
 							System.out.println("삭제할 ID 번호를 입력하세요");
+							int Bno = scn.nextInt();
 							Bno = scn.nextInt(id);
 
 							service.removeBoardMember(Bno);
@@ -159,45 +175,101 @@ public class BoardApp {
 
 //==============================================================회원정보 끝===================================================
 					} else if (menu == 2) {// 자유게시판 출력
-						
+						List<BoardMember> list = new ArrayList<BoardMember>();
 
 						while (true) {
-							System.out.println("--------------------------------------------------------------------"
-											  +"\r\n                               자유게시판                              "
-										  +"\r\n====================================================================\r\n"
-											 + "  1.글쓰기      2.게시판 보기      3.글 수정하기      4.게시글삭제      5.나가기 \r\n"
-											 + "==================================================================== ");
+							System.out.println("\n\n\n-----------------------------------------------------------------------------------"
+											  +"\r\n                                    자유게시판                              "
+										  +"\r\n===================================================================================\r\n"
+											 + "     1.글쓰기 	 2.게시판 보기 	  3.글 수정하기	   4.게시글삭제  	 5.나가기  \r\n"
+											 + "===================================================================================\n\n\n ");
 					            menu = scn.nextInt();
 							
 							if (menu == 1) {
-								int BoardNo = 0;
 								
-
-								System.out.println("제목 입력||:");
-								String title = scn.next();
+								System.out.println("제목 입력||:" + "");
+								scn.nextLine();
+								String title = scn.nextLine();
 								
 								System.out.println("내용 입력||:");
-								String content = scn.next();
+								String content = scn.nextLine();
 								
-								String name = null;
-								Date regdate = null;
-							
-
-
-								BoardMember w1 = new BoardMember(BoardNo, name, title, content, regdate);
+							   
+								
+							    
+								System.out.println("작성자의 ID 를 입력해주세요");
+								int bno = scn.nextInt();
+								String name = service.searchName(bno);
+								System.out.println(name);
+								BoardMember w1 = new BoardMember(0,name, title, content,null);
 								service.insertBoard(w1);
 
 								System.out.println("글 작성이 완료되었습니다.");
-
+								System.out.println("\r\n====================================================================\n\n\n\n");
 								continue;
 
 							} else if (menu == 2) {// 게시판 보기
 								
-
+								
+								
+								System.out.println("\n\n\n-----------------------------------------------------------------------------------"
+										  +"\r\n                               자유게시판                              "
+										  		  +"\r\n===================================================================================");
+								
+								List<BoardMember> list1 = service.boardList();
+								for(BoardMember i : list1) {
+									System.out.println(i.toString2());
+								}
+					System.out.println("\r\n===================================================================================\n\n\n\n");
 							} else if (menu == 3) {
+								
+								System.out.println("작성자의 ID 를 입력해주세요");
+								int bno = scn.nextInt();
+								boolean truefalse = service.userCheak(bno);
+								
+								if(truefalse == true) {
+									
+									System.out.println("수정할 게시글 번호를 입력하세요");
+									int BoardNo = scn.nextInt();
+									
+									scn.nextLine();
+									System.out.println("수정할 제목을 입력하세요");
+									String title = scn.nextLine();
+									
+									
+									System.out.println("수정할 내용을 입력하세요");
+									String content = scn.nextLine();
+									
+									BoardMember m1 = new BoardMember(BoardNo, title, content);
+									
+									service.modifyBoard(m1);
+									
+									System.out.println("정상적으로 수정되었습니다.");
+								}
+								else
+								{
+									System.out.println("본인이 쓴 게시글이 아닙니다.");
+								}
+								
+								
+								
+								
+								
 
 							} else if (menu == 4) {
-
+								System.out.println("작성자의 ID 를 입력해주세요");
+								int bno = scn.nextInt();
+								boolean truefalse = service.userCheak(bno);
+								if(truefalse == true)
+								{
+									System.out.println("삭제할 게시글의 번호를 입력하세요.");
+									int BoardNo = scn.nextInt();
+									service.removeBoard(BoardNo);
+								}
+								else
+								{
+									System.out.println("본인이 쓴 게시글이 아닙니다.");
+								}
 							} else if (menu == 5) {
 								
 								System.out.println("\r\n 자동으로 로그아웃 됩니다. 나가시겠습니까?" + "1. YES 2. NO\r\n");

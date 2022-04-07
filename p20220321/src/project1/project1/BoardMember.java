@@ -16,7 +16,7 @@ public class BoardMember implements Serializable {
 	private int BoardNo;
 	private String title;
 	private String content;
-	private Date regdate;
+	private String regdate;
 	private String reply;
 
 	public BoardMember(int id, String pw, String name, String gender, String birth, String email, String tel) {
@@ -30,21 +30,30 @@ public class BoardMember implements Serializable {
 		this.tel = tel;
 	}
 	
-	public BoardMember(int boardNo, String name, String title, String content, Date regdate) {
+	public BoardMember(int boardNo, String name, String title, String content, String regdate) {
 		
-		BoardNo = boardNo;
+		this.BoardNo = boardNo;
 		this.name = name;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
 
 	}
+	
+
+
+	public BoardMember(int BoardNo, String title, String content) {
+		super();
+		this.BoardNo = BoardNo;
+		this.title = title;
+		this.content = content;
+	}
 
 	@Override
 
 	public String toString() {
 
-		String str = String.format("아이디:%s \n이름:%s \n성별:%s \n생일:%s \n이메일:%s \n번호:%s \n",
+		String str = String.format("아이디:%d \n이름:%s \n성별:%s \n생일:%s \n이메일:%s \n번호:%s \n",
 
 				id, name, gender, birth, email, tel);
 
@@ -52,6 +61,13 @@ public class BoardMember implements Serializable {
 
 	}
 	
+	public String toString2() {
+		return "-----------------------------------------------------------------------------------\n"
+				+" |no. "+  BoardNo + "| " + "[작성자: "+ name +"] " + " [제목: " + title + "] " + " [작성일: " + regdate+ "] " +"\n"
+				+"-----------------------------------------------------------------------------------\n"
+				+"[내용: " + content +"]"+ "\r\n";
+				
+	}
 	
 	public BoardMember() {
 
@@ -62,7 +78,7 @@ public class BoardMember implements Serializable {
 	}
 
 	public void setBoardNo(int boardNo) {
-		BoardNo = boardNo;
+		this.BoardNo = boardNo;
 	}
 
 	public String getTitle() {
@@ -81,11 +97,11 @@ public class BoardMember implements Serializable {
 		this.content = content;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
