@@ -22,8 +22,8 @@ public interface BoardService {
 	public BoardMember getBoardMember(int Bno);//한건 조회
 	public void removeBoardMember(int Bno);
 	public void modifyBoardMember(BoardMember board);
-	public List<BoardMember> searchBoardMember(int Bno);
-	public int login(int id, String pw);
+	public List<BoardMember> searchBoardMember(String id);
+	public int login(String name, String pw);
 }
 
   

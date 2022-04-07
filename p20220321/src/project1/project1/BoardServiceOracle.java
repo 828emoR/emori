@@ -1,6 +1,5 @@
 package project1;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,22 +12,24 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	public void insertBoardMember(BoardMember board2) {// 입력처리
 		conn = getConnect();
 		String sql = "insert into projectmember(id, Pw ,name, gender, birth, email, tel) "
-				+ "values (board_mem_seq.nextval, ?, ?, ?, ?, ?, ?)";
+				+ "values (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, board2.getPw());
+			psmt.setString(1, board2.getId());
+			
+			psmt.setString(2, board2.getPw());
 
-			psmt.setString(2, board2.getName());
+			psmt.setString(3, board2.getName());
 
-			psmt.setString(3, board2.getGender());
+			psmt.setString(4, board2.getGender());
 
-			psmt.setString(4, board2.getBirth());
+			psmt.setString(5, board2.getBirth());
 
-			psmt.setString(5, board2.getEmail());
+			psmt.setString(6, board2.getEmail());
 
-			psmt.setString(6, board2.getTel());
+			psmt.setString(7, board2.getTel());
 
 			psmt.executeUpdate();
 
@@ -42,20 +43,20 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	}
 
 	@Override
-	public List<BoardMember> searchBoardMember(int Bno) {// 한건 조회
+	public List<BoardMember> searchBoardMember(String id) {// 한건 조회
 		conn = getConnect();
 		List<BoardMember> list = new ArrayList<BoardMember>();
 		String sql = "select * " + "from ProjectMember " + "where id = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, Bno);
+			psmt.setString(1, id);
 
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				BoardMember Bom = new BoardMember();
 
-				Bom.setId(rs.getInt("id"));
+				Bom.setId(rs.getString("id"));
 				Bom.setName(rs.getString("name"));
 				Bom.setGender(rs.getString("gender"));
 				Bom.setBirth(rs.getString("birth"));
@@ -75,20 +76,19 @@ public class BoardServiceOracle extends DAO implements BoardService {
 
 	}
 	
-	public String searchName(int Bno) {
+	public String searchName(String id) {
 		conn = getConnect();
 		String sql = "select name from projectMember where id = ? ";
 		String name = null;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, Bno);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				name = rs.getString("name");
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			disconnect();
@@ -132,7 +132,7 @@ public class BoardServiceOracle extends DAO implements BoardService {
 			psmt.setString(1, board2.getName());
 			psmt.setString(2, board2.getEmail());
 			psmt.setString(3, board2.getTel());
-			psmt.setInt(4, board2.getId());
+			psmt.setString(4, board2.getId());
 
 			int r = psmt.executeUpdate();
 
@@ -183,7 +183,7 @@ public int userCheck(String tel) {
 	return id;
 }
 	@Override
-	public int login(int id, String pw) {//로그인
+	public int login(String id, String pw) {//로그인
 		conn = getConnect();// DB연동시작
 
 		String sql = "SELECT * FROM projectmember WHERE id = ? AND Pw = ?";
@@ -191,7 +191,7 @@ public int userCheck(String tel) {
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setInt(1, id);
+			psmt.setString(1, id);
 			psmt.setString(2, pw);
 
 			int r = psmt.executeUpdate();
@@ -294,18 +294,17 @@ public int userCheck(String tel) {
 
 	}
 
-	public boolean userCheak(int id) {
+	public boolean userCheak(String id) {
 		conn = getConnect();
 		String sql = "select* from projectmember where id = ?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, id);
+			psmt.setString(1, id);
 			int r = psmt.executeUpdate();
 			if(r > 0 )
 				return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			disconnect();

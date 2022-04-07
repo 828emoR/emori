@@ -1,11 +1,10 @@
 package project1;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class BoardMember implements Serializable {
 
-	private int id;
+	private String id;
 	private String pw;
 	private String name;
 	private String gender;
@@ -19,7 +18,7 @@ public class BoardMember implements Serializable {
 	private String regdate;
 	private String reply;
 
-	public BoardMember(int id, String pw, String name, String gender, String birth, String email, String tel) {
+	public BoardMember(String id, String pw, String name, String gender, String birth, String email, String tel) {
 
 		this.id = id;
 		this.pw = pw;
@@ -30,9 +29,9 @@ public class BoardMember implements Serializable {
 		this.tel = tel;
 	}
 	
-	public BoardMember(int boardNo, String name, String title, String content, String regdate) {
+	public BoardMember(String id, String name, String title, String content, String regdate) {
 		
-		this.BoardNo = boardNo;
+		this.id = id;
 		this.name = name;
 		this.title = title;
 		this.content = content;
@@ -115,13 +114,13 @@ public class BoardMember implements Serializable {
 
 	
 
-	public int getId() {
+	public String getId() {
 
 		return id;
 
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 
 		this.id = id;
 
