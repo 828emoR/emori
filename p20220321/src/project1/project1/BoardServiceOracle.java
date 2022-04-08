@@ -102,7 +102,7 @@ public class BoardServiceOracle extends DAO implements BoardService {
 		List<BoardMember> list = new ArrayList<BoardMember>();// 조회된 결과값을 담기위한 컬렉션.
 
 		conn = getConnect();
-		String sql = "select * from projectMember order by id";
+		String sql = "select * from projectMember";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -125,14 +125,15 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	@Override
 	public void modifyBoardMember(BoardMember board2) {// 회원정보 수정
 		conn = getConnect();
-		String sql = "UPDATE ProjectMember " + "SET name = ? " + "email = ? " + "tel = ? " + "where id = ?";
+		String sql = "UPDATE ProjectMember " + "SET name = ?, " +  "Pw = ?, " +"email = ?, " + "tel = ? " + "where id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 
 			psmt.setString(1, board2.getName());
-			psmt.setString(2, board2.getEmail());
-			psmt.setString(3, board2.getTel());
-			psmt.setString(4, board2.getId());
+			psmt.setString(2, board2.getPw());
+			psmt.setString(3, board2.getEmail());
+			psmt.setString(4, board2.getTel());
+			psmt.setString(5, board2.getId());
 
 			int r = psmt.executeUpdate();
 
@@ -146,12 +147,12 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	}
 
 	@Override
-	public void removeBoardMember(int Bno) {
+	public void removeBoardMember(String id) {
 		conn = getConnect();
 		String sql = "delete from projectmember " + "where id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, Bno);
+			psmt.setString(1, id);
 			int r = psmt.executeUpdate(); // 실행
 			System.out.println(r + "건 삭제완료.");
 		} catch (SQLException e) {

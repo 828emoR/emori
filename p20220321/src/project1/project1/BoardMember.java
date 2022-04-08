@@ -52,7 +52,7 @@ public class BoardMember implements Serializable {
 
 	public String toString() {
 
-		String str = String.format("아이디:%d \n이름:%s \n성별:%s \n생일:%s \n이메일:%s \n번호:%s \n",
+		String str = String.format("아이디:%s \n이름:%s \n성별:%s \n생일:%s \n이메일:%s \n번호:%s \n",
 
 				id, name, gender, birth, email, tel);
 
@@ -61,9 +61,9 @@ public class BoardMember implements Serializable {
 	}
 	
 	public String toString2() {
-		return "-----------------------------------------------------------------------------------\n"
-				+" |no. "+  BoardNo + "| " + "[작성자: "+ name +"] " + " [제목: " + title + "] " + " [작성일: " + regdate+ "] " +"\n"
-				+"-----------------------------------------------------------------------------------\n"
+		return "----------------------------------------------------------------------------------------------------------------\n"
+				+" |no. "+ BoardNo + "| "+"[작성자: "+ name +"] "+" [제목: " + title + "] "+"[작성일: " + regdate+ "] "+"\n"
+				+"--------------------------------------------------------------------------------------------------------------\n"
 				+"[내용: " + content +"]"+ "\r\n";
 				
 	}

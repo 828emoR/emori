@@ -33,14 +33,13 @@ public class BoardApp {
 		
 		while (true) {
 			System.out.println(
-					"------------------------------------------------------" 
-			+ "\r\n" 
-							+ "                       "+ "자유게시판\r\n"
-			+ "------------------------------------------------------");
+					"===================================================================================\n" 
+				   +"                                     자유게시판                                   \r\n");
 
-			System.out.println("------------------------------------------------------"
-					+ "\r\n   1 회원가입	       2 로그인		  3.나가기	"
-					+ "\r\n------------------------------------------------------" + "\r\n선택>>");
+ System.out.println("==================================================================================="
+			  + "\r\n  1.회원가입                          2.로그인                           3.나가기"
+			  + "\r\n==================================================================================="
+			  + "\r\n선택>>");
 			
 			
 			int menu = scn.nextInt();
@@ -72,10 +71,10 @@ public class BoardApp {
 				System.out.println("회원가입이 완료되었습니다!");
 //				String id = service.userCheck(tel);
 			
-				System.out.println("  ┌───────────────────────────────────────────────────────────────┐");
-				System.out.println("    가입하신 계정의 식별번호는 " + s1.getId() +" 입니다. 잊어버리지 않게 주의해주세요! ");
-				System.out.println("  └──────────────────────┐"+ "  ┌─────────────────────────────────────┘");
-				System.out.println("                         |"+" /");
+				System.out.println("  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐");
+				System.out.println("        가입하신 계정의 식별번호는 " + s1.getId() +" 입니다. 잊어버리지 않게 주의해주세요! ");
+				System.out.println("  └──────────────────────┐"+ "  ┌──────────────────────────────────────────────────────────────────────┘");
+				System.out.println("                          |"+" /");
 				System.out.println("\t\t  *゜   (\\__(\\\r\n"
 								 + "\t\t   c(⌒(_*´ㅅ`)_\r\n"
 								 	+ "");
@@ -83,13 +82,13 @@ public class BoardApp {
 				continue;
 
 			} else if (menu == 2) {// 로그인 호출
-				System.out.println("\r\n================");
-				System.out.println("아이디(닉네임) 입력 >>");
-				System.out.println("================\r\n");
+				System.out.println("\r\n===================\n"
+                                      +"아이디(닉네임) 입력 >>\n"
+                                      +"===================\r\n");
 				String id = scn.next();
-				System.out.println("\r\n============");
-				System.out.println("비밀번호 입력>>");
-				System.out.println("=============\r\n");
+				System.out.println("\r\n=============\n"
+						              +"비밀번호 입력>>\n"
+						              +"=============\r\n");
 				String pw = scn.next();
 
 				int result = service.login(id, pw);
@@ -98,41 +97,58 @@ public class BoardApp {
 
 					System.out.println("로그인 성공! \r\n");
 
-					System.out.println("\r\n==========================");
-					System.out.println("1.회원정보 2.자유게시판 3.나가기");
-					System.out.println("==========================\r\n");
+					System.out.println("===================================================================================\n"
+								      +"1 .회원정보                          2.자유게시판                          3.나가기  \n"
+								      +"===================================================================================\n");
 					menu = scn.nextInt();
 
 					if (menu == 1) {// 회원정보 출력
 						System.out.println("회원정보 메뉴입니다.");
 
-						System.out.println("\r\n=======================================");
-						System.out.println("1.회원정보 확인 2.회원정보 수정 3.회원 삭제 4.나가기");
-						System.out.println("=======================================\r\n");
+						System.out.println("\r\n===================================================================================\n"
+                                              +"   1.회원정보 확인          2.회원정보 수정          3.회원 삭제           4.나가기 \n"
+                                              +"===================================================================================\n");
 						 menu = scn.nextInt();
 
 						if (menu == 1) {
+							
+							System.out.println("===================================================================================\n"
+											  +"       1.id로 한건만 조회                  |                  2.전체 회원 조회\n"
+											  +"===================================================================================\n\n");
+							menu = scn.nextInt();
+							if (menu == 1) {//한건 조회
+								System.out.println("회원 정보를 입력해주세요");
+								System.out.println("\r\n=============");
+								System.out.println("조회할 ID 입력 >>");
+								System.out.println("=================\r\n");
+								
+								String BoardId = scn.next();
+								list = service.searchBoardMember(BoardId);
 
-							System.out.println("회원 정보를 입력해주세요");
-							System.out.println("\r\n=============");
-							System.out.println("조회할 ID 입력 >>");
-							System.out.println("=================\r\n");
-							String BoardId = scn.next();
-							list = service.searchBoardMember(BoardId);
-
-							if (list.isEmpty()) {
-								System.out.println("정보없음");
-							} else {
-								for (BoardMember i : list) {
-									System.out.println(i.toString());
+								if (list.isEmpty()) {
+									System.out.println("정보없음");
+								} else {
+									for (BoardMember i : list) {
+										System.out.println(i.toString());
+									}
+									continue;
 								}
-								continue;
-							}
 
+							}else if(menu == 2) {//전체조회
+								System.out.println("\r\n===================================================================================\n"
+										          +     "                                    현재 회원 목록"
+										          +"  \n===================================================================================\n");
+								List<BoardMember> list2 = service.boardMemList();
+								for(BoardMember i : list2) {
+									System.out.println(i.toString2());
+								}
+								
+							}
+						
 						} else if (menu == 2) {// 회원정보 수정
 
-							String boardId = scn.next();
-							System.out.println("수정할 대상의 ID 번호 입력");
+							String boardId;
+							System.out.println("수정할 대상의 ID 입력");
 							boardId = scn.next();
 							
 							System.out.println("수정할 닉네임 입력");
@@ -147,17 +163,18 @@ public class BoardApp {
 							System.out.println("수정 할 전화번호 입력");
 							String tel = scn.next();
 
-							BoardMember s1 = new BoardMember(boardId, boardPW, null, null, null, email, tel);
+							BoardMember s1 = new BoardMember(boardId, boardPW, name, null, null, email, tel);
 							service.modifyBoardMember(s1);
 							System.out.println("처리가 완료되었습니다.");
 
 						} else if (menu == 3) {// 회원삭제
 							
-							System.out.println("삭제할 ID 번호를 입력하세요");
-							int Bno = scn.nextInt();
-							Bno = scn.nextInt(Bno);
+							System.out.println("회원 삭제 페이지입니다");
+							
+							System.out.println("삭제할 Id 를 입력하세요");
+							id = scn.next();
 
-							service.removeBoardMember(Bno);
+							service.removeBoardMember(id);
 							System.out.println("처리가 완료되었습니다.");
 
 						} else if (menu == 4) {// 나가기
@@ -181,10 +198,10 @@ public class BoardApp {
 
 						while (true) {
 							System.out.println("\n\n\n-----------------------------------------------------------------------------------"
-											  +"\r\n                                    자유게시판                              "
-										  +"\r\n===================================================================================\r\n"
-											 + "     1.글쓰기 	 2.게시판 보기 	  3.글 수정하기	   4.게시글삭제  	 5.나가기  \r\n"
-											 + "===================================================================================\n\n\n ");
+											    +"\r\n                                    자유게시판                              "
+										        +  "\n===================================================================================\n"
+											    +    "  1.글쓰기      2.게시판 보기      3.글 수정하기       4.게시글삭제       5.나가기       \n"
+											    +    "===================================================================================\n\n\n ");
 					            menu = scn.nextInt();
 							
 							if (menu == 1) {
@@ -214,16 +231,15 @@ public class BoardApp {
 								
 								
 								System.out.println("\n\n\n-----------------------------------------------------------------------------------"
-										  +"\r\n                                     자유게시판                                   "
-										  		  +"\r\n===================================================================================");
+										              +"\n                                     자유게시판                                   "
+										  		      +"\n===================================================================================");
 								
 								List<BoardMember> list1 = service.boardList();
 								for(BoardMember i : list1) {
 									System.out.println(i.toString2());
 								}
-								
-								
-					System.out.println("\r\n===================================================================================\n\n\n\n");
+					              System.out.println("\r\n===================================================================================\n\n\n\n");
+					
 							} else if (menu == 3) {
 								
 								System.out.println("수정할 게시글 번호를 입력하세요");
