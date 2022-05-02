@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax/fetch.html</title>
+<script src=ajax2.js></script>
+</head>
+<body>
+
+<script>
+//ajax =>XNLhttpRequest: => fetch();
+let xhtp = new XMLHttpRequest();
+xhtp.open('get', '../studentList.json');
+xhtp.send();
+xhtp.onload = function(){
+console.log('xmlhttprequest')
+console.log(xhtp.responseText)
+
+xhtp2.onload = function(){
+		
+	}
+}
+
+fetch('../studentList.json')
+.then(function(result){
+	let val = result.json();//pending
+	return val;
+})
+.then(function(result){
+	console.log(result);
+})
+.catch(function(error){
+	console.log(error);
+});
+
+</script>
+
+<button id='allcheck'>선택삭제</button>
+<button id=' allcke'>전체선택</button>
+<table border="1">
+
+<tr>
+	<td><input type='checkbox'></td>
+	<td>Hongkilldong</td>
+</tr>
+	<tr>
+		<td><input type='checkbox'></td>
+		<td>Hongkilldong2</td>
+	</tr>
+		<tr>
+			<td><input type='checkbox'></td>
+			<td>Hongkilldong3</td>
+		</tr>
+</table>
+<script>
+
+
+
+</script>
+</body>
+</html>
