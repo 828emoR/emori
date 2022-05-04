@@ -15,18 +15,20 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		//charset = config.getInitParameter("charset");
+		charset = config.getInitParameter("charset");
+		System.out.println("here!!");
 				
 		list = new HashMap<String, Control>();
 		list.put("/memberInsert.do", new MemberInsertControl());
 		list.put("/memberUpdate.do", new MemberUpdateControl());
 		list.put("/memberList.do", new MemberListControl());
-		
+		list.put("/memberSearch.do", new MemberSearchControl());
+		list.put("/memberDelete.do", new MemberDeleteControl());
 	}
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//req.setCharacterEncoding(charset);
+		req.setCharacterEncoding(charset);
 		
 		String url = req.getRequestURI(); // /p220503/memberInsert.do
 		String context = req.getContextPath();

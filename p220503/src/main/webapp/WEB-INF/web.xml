@@ -5,6 +5,10 @@
   <servlet>
 	  <servlet-name>front</servlet-name>
 	  <servlet-class>co.dev.web.FrontController</servlet-class>
+	  <init-param>
+	  <param-name>charset</param-name>
+	  <param-value>UTF-8</param-value>
+ 	</init-param>
   </servlet>
   <servlet-mapping>
   	<servlet-name>front</servlet-name>
