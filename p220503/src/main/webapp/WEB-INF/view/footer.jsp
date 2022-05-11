@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인화면입니다.</title>
+<title>Insert title here</title>
 </head>
 <body>
-   <jsp:forward page="myapp.homepage.tiles"></jsp:forward>
+footer test
 </body>
 </html>
