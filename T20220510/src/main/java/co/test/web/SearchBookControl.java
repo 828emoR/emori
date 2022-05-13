@@ -12,8 +12,8 @@ import co.test.vo.BookVO;
 public class SearchBookControl implements Controller {
 
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 
 		String path = "result/searchOutput.jsp";
 		String bookCode = request.getParameter("bookCode");
