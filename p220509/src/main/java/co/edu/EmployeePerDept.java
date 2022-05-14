@@ -15,8 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 @WebServlet("/EmployeePerDept")
 public class EmployeePerDept extends HttpServlet {
