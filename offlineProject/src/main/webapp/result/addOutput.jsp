@@ -4,15 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>addOutPut.jsp</title>
+<title>result/addOutPut.jsp</title>
 </head>
 <body>
-
-	<h3>등록결과페이지</h3>
-	
-	
-	
+ <h3>${empty name }님 가입이 완료되었습니다.</h3>
+</body>
     <a href="${pageContext.servletContext.contextPath }/index.jsp">첫페이지</a>
-
 </body>
 </html>

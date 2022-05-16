@@ -8,7 +8,7 @@
 <title>memberResult/memberUpdateOutput.jsp</title>
 </head>
 <body>
-  <h3>${id } 님 의 정보가 삭제되었습니다.</h3>
+  <h3>${id } 님 의 정보가 수정되었습니다.</h3>
    <jsp:include page="home.jsp"></jsp:include>
 
 </body>

@@ -8,18 +8,16 @@ import co.project.vo.UserInfoVO;
 
 public class UserInfoDAO extends DAO {
 
-	public List<UserInfoVO> UserList() {
-		
-		conn();
-		
+	
+	//회원정보
+	public List<UserInfoVO> UserList() {	
+		conn();		
 		List<UserInfoVO> list = new ArrayList<UserInfoVO>();
-		
+
 		try {
 			psmt = conn.prepareStatement("SELECT * FROM user_info order by id");
-			
 			rs = psmt.executeQuery();
-				while(rs.next()) {
-					
+				while(rs.next()) {	
 				UserInfoVO vo = new UserInfoVO();
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
@@ -53,14 +51,14 @@ public class UserInfoDAO extends DAO {
 				vo.setTel(rs.getString("tel"));
 				vo.setEmail(rs.getString("email"));
 				vo.setAddress(rs.getString("address"));
+				
+				int r = psmt.executeUpdate();
+				System.out.println(r + "건 조회완료");
 			}
-			int r = psmt.executeUpdate();
-			System.out.println(r + "건 조회완료");
-		} catch (SQLException e) {
 		
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return vo;
 	}
 
@@ -87,22 +85,61 @@ public class UserInfoDAO extends DAO {
 			disconn();
 			
 		}
-		
 	}
 
 	public void updateUser(UserInfoVO UserInst) {
+		conn();
 		String sql = "UPDATE user_info \r\n"
-				+ "SET id = 'tt',\r\n"
-				+ "pw = 'tt',\r\n"
-				+ "name = 'tt',\r\n"
-				+ "tel = 't',\r\n"
-				+ "email = 'tt@tt.com',\r\n"
-				+ "address = 'tt'\r\n"
-				+ "where id = '?'";
-	}
-
-	public void deleteUser(String UserSel) {
-		String sql = "DELETE FROM user_info\r\n"
-				+ "WHERE ID = '?'";
+				+ "SET id = ?, "
+				+ "pw = ?, "
+				+ "name = ?, "
+				+ "tel = ?, "
+				+ "email = ?, "
+				+ "address = ?, "
+				+ "where id = ? ";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, UserInst.getId());
+			psmt.setString(2, UserInst.getPw());
+			psmt.setString(3, UserInst.getName());
+			psmt.setString(4, UserInst.getTel());
+			psmt.setString(5, UserInst.getEmail());
+			psmt.setString(6, UserInst.getAddress());
+		
+		int r = psmt.executeUpdate();
+		System.out.println(r + "건 수정성공");
+		
+	} catch (SQLException e) {
+	
+		e.printStackTrace();
+	}finally {
+		disconn();
+		
 	}
 }
+	
+	
+
+	
+
+	public void deleteUser(String UserSel) {
+		conn();
+		String sql = "DELETE FROM user_info WHERE ID = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, UserSel);
+			rs = psmt.executeQuery();
+			
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}finally {
+			disconn();
+			
+		}
+		
+	}
+
+	}
+

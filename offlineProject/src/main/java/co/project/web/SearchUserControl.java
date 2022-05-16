@@ -23,7 +23,7 @@ public class SearchUserControl implements Controller {
 		
 		
 		 
-		System.out.println("므요1");
+		System.out.println("해당 아이디 조회 통과");
 		// 조회 Id가 없을 경우 결과를 보여주는 페이지 지정.
 		if (job.equals("search")) {
 			path = "view/search.jsp";
@@ -44,14 +44,14 @@ public class SearchUserControl implements Controller {
 		UserInfoVO vo = service.findUser(UserSel);
 		
 		// 정상적인 처리가 진행될 경우 페이지 지정.
-		System.out.println("므요2");
+		System.out.println("정상적인 처리 통과");
 		request.setAttribute("", vo);
 		
 		if (job.equals("search")) {
 			request.setAttribute("result", vo);
 			path = "result/searchOutput.jsp";
 		}
-		System.out.println("므요3");
+		System.out.println("값 넘겨주기 완료");
 		request.getRequestDispatcher(path).forward(request, response);
 
 	}

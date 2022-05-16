@@ -8,8 +8,7 @@
 </head>
 
 <body>
-
-	<h3>${error }</h3>
+	${error }
     <h3>회원조회</h3>
     <form action="../searchUser.do" method="get">
         <input type="text" name="id" id=""><br>

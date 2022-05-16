@@ -24,7 +24,7 @@ public class UserService {
 	}
 
 	// 수정
-	public void modifyBook(UserInfoVO UserInst) {
+	public void modifyUser(UserInfoVO UserInst) {
 		dao.updateUser(UserInst);
 	}
 
@@ -34,7 +34,7 @@ public class UserService {
 	}
 
 	// 입력
-	public void addBook(UserInfoVO UserInst) {
+	public void addUser(UserInfoVO UserInst) {
 		dao.insertUser(UserInst);
 	}
 

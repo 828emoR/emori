@@ -16,8 +16,7 @@
         <input type="submit" value="조회">
     </form>
 
-    <!-- 도서삭제를 위한 화면 작성코드를 입력하세요. -->
-    
+
     
 
     <a href="${pageContext.servletContext.contextPath }/index.jsp">첫페이지</a>

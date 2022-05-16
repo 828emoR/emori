@@ -16,8 +16,8 @@ public class UserInfoVO {
 	
 	@Override
 	public String toString() {
-		return "UserInfoVO [id=" + id + ", pw=" + pw + ", name=" + name + ", tel=" + tel + ", email=" + email
-				+ ", address=" + address + "]";
+		return "UserInfoVO [아이디: =" + id + ", 비밀번호: =" + pw + ", 닉네임: =" + name + ", 전화번호: =" + tel + ", 이메일: =" + email
+				+ ", 주소: =" + address + "]";
 		
 	}
 	public UserInfoVO(String id, String pw, String name, String tel, String email, String address) {

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>removeBook.jsp</title>
+    <title>removeUser.jsp</title>
 </head>
 
 <body>
@@ -15,9 +15,6 @@
         <input type="hidden" name="job" value="remove">
         <input type="submit" value="조회">
     </form>
-
-    
-    
 
     <a href="${pageContext.servletContext.contextPath }/index.jsp">첫페이지</a>
 

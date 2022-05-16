@@ -23,7 +23,7 @@ public class FrontController extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-System.out.println("므요");
+
 		enc = config.getInitParameter("encoding");
 
 		map = new HashMap<String, Controller>();
@@ -33,6 +33,7 @@ System.out.println("므요");
 		map.put("/searchUser.do", new SearchUserControl());
 		map.put("/modifyUser.do", new ModifyUserControl());
 		map.put("/removeUser.do", new RemoveUserControl());
+		System.out.println("동작파일 넘김 완료");
 
 	}
 
