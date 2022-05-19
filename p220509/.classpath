@@ -6,37 +6,37 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/cos.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/cos.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/gson-2.9.0.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/gson-2.9.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/ojdbc6_g.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/ojdbc6_g.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/taglibs-standard-compat-1.2.5.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/taglibs-standard-compat-1.2.5.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/taglibs-standard-impl-1.2.5.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/taglibs-standard-impl-1.2.5.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/taglibs-standard-jstlel-1.2.5.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/taglibs-standard-jstlel-1.2.5.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/Desktop/lib/taglibs-standard-spec-1.2.5.jar">
+	<classpathentry kind="lib" path="C:/Users/admin/Desktop/lib/taglibs-standard-spec-1.2.5.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -48,6 +48,5 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/828emoR/git/emori/p220509/src/main/webapp/WEB-INF/lib/gson-2.9.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -26,7 +26,7 @@ public class SearchBookControl implements Controller {
 		
 		 
 
-		// 조회 도서코드가 없을 경우 결과를 보여주는 페이지 지정.
+		// 조회 도서코드가 있을 경우 결과를 보여주는 페이지 지정.
 		if (job.equals("search")) {
 			path = "view/search.jsp";
 		} else if (job.equals("modify")) {
@@ -34,7 +34,7 @@ public class SearchBookControl implements Controller {
 		} else if (job.equals("remove")) {
 			path = "view/remove.jsp";
 		}
-
+		//조회값이 없을 경우 보여주는 페이지 지정
 		if (bookCode.isBlank()) {
 			request.setAttribute("error", "도서코드를 입력하세요.");
 			request.getRequestDispatcher(path).forward(request, response);

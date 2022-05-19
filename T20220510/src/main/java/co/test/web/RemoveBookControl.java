@@ -13,22 +13,16 @@ public class RemoveBookControl implements Controller {
 
 	   @Override
 	   public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	      String code = request.getParameter("bookCode");
-	      
-	      BookVO book = new BookVO();
-	      book.setBookCode(code);
-
-	      if(code.isBlank()) {
-	         request.setAttribute("error", "도서번호를 입력하세요.");
-	         request.getRequestDispatcher("view/remove.jsp").forward(request, response);
-	         return;
-	      }
-	      
-	      BookService service = new BookService();
-	      service.removeBook(code);
-	      
-	      request.setAttribute("code", code);
-	      
-	      request.getRequestDispatcher("result/removeOutput.jsp").forward(request, response);
+		   String book_Code = request.getParameter("book_Code");
+		      
+		      BookVO vo = new BookVO();
+		      vo.setBookCode(book_Code);
+		      
+		      BookService service = new BookService();
+		      service.removeBook(book_Code);
+		      
+		      request.setAttribute("remove", book_Code);
+		      
+		      request.getRequestDispatcher("result/removeOutput.jsp").forward(request, response);
 	   }
 }

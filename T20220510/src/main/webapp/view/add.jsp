@@ -11,10 +11,11 @@
 
     <h3>도서등록</h3>
     <form action="../addBook.do" method="post">
-        제목: <input type="text" name="title"><br>
-        저자: <input type="text" name="author"><br>
-        출판사: <input type="text" name="press"><br>
-        가격: <input type="text" name="price"><br>
+
+        제목: <input type="text" name="book_Title"><br>
+        저자: <input type="text" name="book_Author"><br>
+        출판사: <input type="text" name="book_Press"><br>
+        가격: <input type="text" name="book_Price"><br>
         <input type="submit" value="등록">
     </form>
     

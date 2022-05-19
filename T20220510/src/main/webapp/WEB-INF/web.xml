@@ -18,6 +18,12 @@
 		<servlet-name>main</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	<resource-ref>
+		<description>Oracle Database Connection Pool</description>
+		<res-ref-name>jdbc/myoracle</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

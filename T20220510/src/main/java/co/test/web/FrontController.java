@@ -6,12 +6,11 @@ import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/FrontController")
+//@WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +26,7 @@ public class FrontController extends HttpServlet {
 		enc = config.getInitParameter("encoding");
 
 		map = new HashMap<String, Controller>();
+		//주소값과 해당하는 컨트롤러를 등록
 
 		map.put("/addBook.do", new AddBookControl());
 		map.put("/listBook.do", new ListBookControl());
@@ -44,8 +44,10 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
+		//상기의 값을 통해 실행할 control 값이 뭔지 읽어옴.
 
-		Controller controller = map.get(path);
+		Controller controller = map.get(path);//get은 해당하는 controller를 호출한다.
+		
 		controller.execute(request, response);
 
 	}
