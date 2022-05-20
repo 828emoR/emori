@@ -10,15 +10,14 @@
   	 <put-attribute name="nav" value="/WEB-INF/view/nav.jsp" />
      <put-attribute name="body" value="/WEB-INF/view/body.jsp" />
      <put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
-     <put-attribute name="BuyBody" value="/WEB-INF/BuyBody.jsp"/>
-     <put-attribute name="signIn" value="/WEB-INF/signIn.jsp"/>
+     <put-attribute name="BuyBody" value="/WEB-INF/view/BuyBody.jsp"/>
+     <put-attribute name="signIn" value="/WEB-INF/view/signIn.jsp"/>
   </definition>
   
   <definition name="WILDCARD:*/*" extends="myapp.homepage">
   
   	<put-attribute name="Body" value="/{1}/{2}.jsp"/>
-  	<put-attribute name="BuyBody" value="/{1}/{2}.jsp"/>
-  	<put-attribute name="signIn" value="/{1}/{2}.jsp"/>
+
   	
   </definition>
 </tiles-definitions>

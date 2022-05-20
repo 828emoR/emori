@@ -18,9 +18,10 @@ h2 {
 </head>
 <body>
 <!-- Header -->
-		<div id="head">
-			<jsp:include page="/view/header.jsp"/>
-		</div>
+      <div>
+         <jsp:include page="../WEB-INF/view/nav.jsp" flush="false"/>
+         
+      </div>
 		<br>
 		<br>
 		
@@ -55,9 +56,9 @@ h2 {
 	
 
 	<!-- Footer -->
-		<div id="foot">
-			<jsp:include page="/view/footer.jsp"/>
-		</div>
+      <div>
+         <jsp:include page="../WEB-INF/view/footer.jsp" flush="false"/>
+      </div>
 		
 
 </body>

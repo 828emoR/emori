@@ -17,8 +17,8 @@ public class ProDetailControl implements Control {
 		// 한 건 상세보기
 		
 		String pcode = request.getParameter("productCode");
-		System.out.println(pcode);
 		
+		// 상품
 		ProductService service = new ProductService();
 		ProductVO vo = service.DetailProduct(pcode);
 		
@@ -29,6 +29,9 @@ public class ProDetailControl implements Control {
 		
 		
 		request.getRequestDispatcher("result/ProDetailOut.jsp").forward(request, response);
+		
+		
+		// 해당 상품 리뷰
 		
 	}
 

@@ -19,7 +19,7 @@ public class ProductDAO extends DAO {
 	// 상품등록
 	public void insertProduct(ProductVO product) {
 		conn = getConnect();
-		String sql = "insert into product(product_code,product_category,product_name,product_price,product_amount,product_exp,product_img,product_date) values(TO_CHAR(TRUNC(DBMS_RANDOM.VALUE(10000,99999))),?,?,?,?,?,?,systimestamp)";
+		String sql = "insert into product(product_code,product_category,product_name,product_price,product_amount,product_exp,product_img,product_date) values(product_seq,?,?,?,?,?,?,sysdate)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, product.getProductCate());
@@ -50,7 +50,7 @@ public class ProductDAO extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setProductCode(rs.getInt("product_code"));
 				vo.setProductCate(rs.getString("product_category"));
 				vo.setProductName(rs.getString("product_name"));
 				vo.setProductPrice(rs.getInt("product_price"));
@@ -79,7 +79,7 @@ public class ProductDAO extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setProductCode(rs.getInt("product_code"));
 				vo.setProductCate(rs.getString("product_category"));
 				vo.setProductName(rs.getString("product_name"));
 				vo.setProductPrice(rs.getInt("product_price"));
@@ -108,7 +108,7 @@ public class ProductDAO extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setProductCode(rs.getInt("product_code"));
 				vo.setProductCate(rs.getString("product_category"));
 				vo.setProductName(rs.getString("product_name"));
 				vo.setProductPrice(rs.getInt("product_price"));
@@ -137,7 +137,7 @@ public class ProductDAO extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setProductCode(rs.getInt("product_code"));
 				vo.setProductCate(rs.getString("product_category"));
 				vo.setProductName(rs.getString("product_name"));
 				vo.setProductPrice(rs.getInt("product_price"));
@@ -156,7 +156,7 @@ public class ProductDAO extends DAO {
 		return productList;
 	}
 
-	// 카테고리별보기 -> 카테고리별로 보기(1.간식 2.장난감 3.실내용품 4.목욕/미용)
+//	// 카테고리별보기 -> 카테고리별로 보기(1.간식 2.장난감 3.실내용품 4.목욕/미용)
 //	public List<ProductVO> listProduct(String product_category) {
 //		List<ProductVO> productList = new ArrayList<ProductVO>();
 //		conn = getConnect();
@@ -190,14 +190,14 @@ public class ProductDAO extends DAO {
 	public List<ProductVO> listNew() {
 		conn = getConnect();
 		List<ProductVO> newList = new ArrayList<ProductVO>();
-		String sql = "select * from (select * from product order by product_date DESC) "
+		String sql = "select * from (select * from product order by product_code DESC) "
 				+ "where rownum <=9";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setProductCode(rs.getInt("product_code"));
 				vo.setProductCate(rs.getString("product_category"));
 				vo.setProductName(rs.getString("product_name"));
 				vo.setProductPrice(rs.getInt("product_price"));
@@ -226,7 +226,7 @@ public class ProductDAO extends DAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				ProductVO vo = new ProductVO();
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setProductCode(rs.getInt("product_code"));
 				vo.setProductCate(rs.getString("product_category"));
 				vo.setProductName(rs.getString("product_name"));
 				vo.setProductPrice(rs.getInt("product_price"));

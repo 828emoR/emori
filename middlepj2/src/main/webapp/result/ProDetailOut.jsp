@@ -23,6 +23,7 @@
 <!-- Header -->
       <div>
          <jsp:include page="../WEB-INF/view/nav.jsp" flush="false"/>
+         
       </div>
       <!--
       구매페이지 

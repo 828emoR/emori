@@ -156,7 +156,6 @@ public class qnaDAO extends DAO{
 				qnaVO qnavo = new qnaVO();
 				qnavo.setQnaCategory(rs.getString("qna_category"));
 				qnavo.setQnaNo(rs.getInt("qna_no"));
-				qnavo.setProductCode(rs.getString("product_code"));
 				qnavo.setId(rs.getString("id"));
 				qnavo.setQnaTitle(rs.getString("qna_title"));
 				qnavo.setQnaContent(rs.getString("qna_content"));
@@ -178,9 +177,9 @@ public class qnaDAO extends DAO{
 	public qnaVO qnaDetail(int qnaNo) {
 		conn = getConnect();
 		getConnect();
-		String sql = "select q.qna_no, q.qan_date, p.product_code, q.qna_writer, q.qna_title, q.qna_content\r\n"
-				+ "from qna q join product p\r\n"
-				+ "on(q.product_code = p.product_code)\r\n"
+		String sql = "select q.qna_no, q.id, q.qna_writer, q.qna_title, q.qna_content, q.qan_date\r\n"
+				+ "from qna q join user_order o\r\n"
+				+ "on(q.id = o.id)\r\n"
 				+ "where q.qna_no = ?";
 		
 		try {
@@ -190,11 +189,12 @@ public class qnaDAO extends DAO{
 			if(rs.next()) {
 				qnaVO vo = new qnaVO();
 				vo.setQnaNo(rs.getInt("qna_no"));
-				vo.setQnaDate(rs.getString("qan_date"));
-				vo.setProductCode(rs.getString("product_code"));
+				vo.setId(rs.getString("id"));
 				vo.setQnaWrite(rs.getString("qna_writer"));
 				vo.setQnaTitle(rs.getString("qna_title"));
 				vo.setQnaContent(rs.getString("qna_content"));
+				vo.setQnaDate(rs.getString("qan_date"));
+				vo.setQnaPw(rs.getString("qna_pw"));
 				return vo;
 				}
 			}catch(SQLException e) {
@@ -205,12 +205,47 @@ public class qnaDAO extends DAO{
 		return null;
 	}
 	
-	//글쓰기
-	public void writeQna(qnaVO qna) {
+	//문의글쓰기
+	public void addQna(qnaVO qna) {
 		conn = getConnect();
 		getConnect();
-		String sql = "";
+		String sql = "insert into qna (qna_no, id, qna_category, qna_title, qna_content, qna_writer, qan_date, qna_pw)\r\n"
+				+ "values (qna_no_seq.nextval,?, ?, ?, ?, ?, sysdate , ?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, qna.getId());
+			psmt.setString(2, qna.getQnaCategory());
+			psmt.setString(3, qna.getQnaTitle());
+			psmt.setString(4, qna.getQnaContent());
+			psmt.setString(5, qna.getQnaWrite());
+			psmt.setString(6, qna.getQnaPw());
+			
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 입력되었습니다.");
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disconnect();
+		}
 	}
 	
+	//문의글 삭제
+	public void deleteQna(String id) {
+		conn = getConnect();
+		getConnect();
+		String sql = "delete from qna where id = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 삭제되었습니다.");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
 	
 }

@@ -10,20 +10,18 @@ import javax.servlet.http.HttpSession;
 
 import middle.service.Markservice;
 import middle.vo.UserOrderVO;
-import middle.web.Control;
 
 public class Orderlist implements Control {
 
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
-      HttpSession session=request.getSession(true);
-      String Uid = (String) session.getAttribute("Uid");
+	   HttpSession session = request.getSession(true);
+	String Uid = (String) session.getAttribute("Uid");
+      System.out.println(Uid);
       Markservice service = new Markservice();
-      List<UserOrderVO> list = service.listOrder(Uid);
-      System.out.println(list.toString());
+      List<UserOrderVO> list = service.listOrder(Uid);   
       request.setAttribute("list", list);
-      request.getRequestDispatcher("/view/mypage.jsp").forward(request, response);
+      request.getRequestDispatcher("view/mypage.jsp").forward(request, response);
       
       
    }

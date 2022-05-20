@@ -4,7 +4,11 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8" />
-<title>메인이미지+메인 콘텐츠</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>도비마켓</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -34,7 +38,7 @@
 				<div class="col mb-5">
 					<div class="card h-100">
 						<!-- Product image-->
-						<img class="card-img-top" src="upload/${product.productImg }" />
+						<img class="card-img-top" src="../upload/${product.productImg }" />
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">

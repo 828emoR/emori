@@ -51,7 +51,7 @@
 						aria-current="page" href="qna.do">고객센터</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page"
-						href="<%=request.getContextPath()%>/view/add.jsp">회원가입</a></li>
+						href="<%=request.getContextPath()%>/Function/add.jsp">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page"
 						href="<%=request.getContextPath()%>/view/login.jsp">로그인</a></li>

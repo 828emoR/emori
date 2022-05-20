@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>레이아웃</title>
+<title>/Function/add.jsp</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -19,26 +19,28 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
+
 <!-- Header -->
-      <div>
+     <div>
          <jsp:include page="../WEB-INF/view/nav.jsp" flush="false"/>
          
       </div>
-      
-      
-      <!--
-      구매페이지 
-      해당 자리에 원래 있던 코드는 BuyBody로 통합되었습니다.
-      -->
-    	<div>
-			<jsp:include page="../WEB-INF/view/signIn.jsp" flush="false"/>
-		</div>
-   <!-- Footer -->
-      <div>
+
+    <h3>회원가입</h3>
+    <form action="../addUser.do" method="post">
+        Id: <input type="text" name="Uid"><br>
+        pw: <input type="password" name="Upw"><br>
+        name: <input type="text" name="Uname"><br>
+        tel: <input type="tel" name="Utel"><br>
+        email: <input type="email" name="Uemail"><br>
+        address: <input type="text" name="Uaddress"><br>      
+        <input type="submit" value="회원가입">
+    </form>
+    
+   <div>
          <jsp:include page="../WEB-INF/view/footer.jsp" flush="false"/>
       </div>
-</body>
 
-<!--스크립트도  "js/BuyBodyDom.js" 로 들어갔습니다. -->
 </html>

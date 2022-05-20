@@ -22,7 +22,6 @@ public class ModifyControl implements Control {
       String Utel = request.getParameter("Utel");
       String Uemail = request.getParameter("Uemail");
       String Uaddress = request.getParameter("Uaddress");
-      System.out.println(Uid);
       UserVO1 vo = new UserVO1();
       vo.setUid(Uid);
       vo.setUpw(Upw);
