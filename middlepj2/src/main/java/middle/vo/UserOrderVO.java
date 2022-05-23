@@ -5,7 +5,7 @@ private String uid; //구매 id
 private int productCode; // 구매 상품코드
 private int productPrice;  // 구매 상품금액
 private String productName; // 상품 이름
-private String uorderCode; // 주문번호
+private int uorderCode; // 주문번호
 private String uorderDate; // 주문날짜
 private String uorderAddress;// 주소
 private String uorderName; // 주문자이름
@@ -16,7 +16,7 @@ public UserOrderVO() {
    
 }
 
-public UserOrderVO(String uid, int productCode, int productPrice, String productName, String uorderCode,
+public UserOrderVO(String uid, int productCode, int productPrice, String productName, int uorderCode,
 		String uorderDate, String uorderAddress, String uorderName, String uorderTel, int amount, String productImg) {
 	super();
 	this.uid = uid;
@@ -56,10 +56,10 @@ public String getProductName() {
 public void setProductName(String productName) {
 	this.productName = productName;
 }
-public String getUorderCode() {
+public int getUorderCode() {
 	return uorderCode;
 }
-public void setUorderCode(String uorderCode) {
+public void setUorderCode(int uorderCode) {
 	this.uorderCode = uorderCode;
 }
 public String getUorderDate() {

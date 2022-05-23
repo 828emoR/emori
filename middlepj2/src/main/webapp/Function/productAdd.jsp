@@ -2,10 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>상품 등록 페이지</title>
-</head>
 <body>
 	<h3>상품등록화면</h3>
 	<form action="../productAdd.do" method="post" enctype="multipart/form-data">

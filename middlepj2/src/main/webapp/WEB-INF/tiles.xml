@@ -12,11 +12,17 @@
      <put-attribute name="footer" value="/WEB-INF/view/footer.jsp" />
      <put-attribute name="BuyBody" value="/WEB-INF/view/BuyBody.jsp"/>
      <put-attribute name="signIn" value="/WEB-INF/view/signIn.jsp"/>
+     <put-attribute name="banner" value="/WEB-INF/view/banner.jsp"/>
+     <put-attribute name="loginview" value="/WEB-INF/view/loginview.jsp"/>
+     
+     
+     
   </definition>
   
-  <definition name="WILDCARD:*/*" extends="myapp.homepage">
+  <definition name="WILDCARD:*/*/*" extends="myapp.homepage">
   
-  	<put-attribute name="Body" value="/{1}/{2}.jsp"/>
+  	<put-attribute name="Body" value="/webapp/{1}/{2}.jsp"/>
+
 
   	
   </definition>

@@ -199,7 +199,7 @@ public class ModiFyDAO extends DAO {
 	         psmt.setString(1, vo.getUorderAddress());
 	         psmt.setString(2, vo.getUorderName());
 	         psmt.setString(3, vo.getUorderTel());
-	         psmt.setString(4, vo.getUorderCode());
+	         psmt.setInt(4, vo.getUorderCode());
 
 	         int r = psmt.executeUpdate();
 	          System.out.println(r +"수정");

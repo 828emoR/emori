@@ -4,6 +4,7 @@ import java.util.List;
 
 import middle.dao.ReviewDAO;
 import middle.vo.ReviewVO;
+import middle.vo.UserOrderVO;
 
 public class ReviewService {
 	
@@ -12,6 +13,12 @@ public class ReviewService {
 	// 리뷰쓰기
 	public void reviewInsert(ReviewVO review) {
 		dao.insertReview(review);
+	}
+	
+	// 로그인 한 사용자가 구매한 상품 조회
+	public List<UserOrderVO> orderSearch(String uid) {
+		return dao.searchOrder(uid);
+		
 	}
 	
 	// 리뷰수정

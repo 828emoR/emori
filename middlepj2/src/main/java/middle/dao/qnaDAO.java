@@ -194,7 +194,6 @@ public class qnaDAO extends DAO{
 				vo.setQnaTitle(rs.getString("qna_title"));
 				vo.setQnaContent(rs.getString("qna_content"));
 				vo.setQnaDate(rs.getString("qan_date"));
-				vo.setQnaPw(rs.getString("qna_pw"));
 				return vo;
 				}
 			}catch(SQLException e) {
@@ -230,17 +229,39 @@ public class qnaDAO extends DAO{
 	}
 	
 	//문의글 삭제
-	public void deleteQna(String id) {
+	public void deleteQna(int qnaNo) {
 		conn = getConnect();
 		getConnect();
-		String sql = "delete from qna where id = ?";
+		String sql = "delete from qna where qna_no = ?";
 		
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setInt(1, qnaNo);
 			
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 삭제되었습니다.");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+	
+	//문의글 수정
+	public void updateQna(qnaVO qnaNo) {
+		conn = getConnect();
+		getConnect();
+		String sql = "update qna\r\n"
+				+ "set qna_category= ?, qna_title = ?, qna_content=?\r\n"
+				+ "where qna_no = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, qnaNo.getQnaCategory());
+			psmt.setString(2, qnaNo.getQnaTitle());
+			psmt.setString(3, qnaNo.getQnaContent());
+			
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 수정되었습니다");
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {

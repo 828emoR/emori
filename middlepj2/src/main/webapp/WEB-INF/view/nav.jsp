@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <title>도비마켓</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
@@ -51,10 +50,10 @@
 						aria-current="page" href="qna.do">고객센터</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page"
-						href="<%=request.getContextPath()%>/Function/add.jsp">회원가입</a></li>
+						href="${pageContext.request.contextPath}/Function/add.jsp">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page"
-						href="<%=request.getContextPath()%>/view/login.jsp">로그인</a></li>
+						href="${pageContext.request.contextPath}/Function/login.jsp">로그인</a></li>
 					<%
 					} else {
 					%>

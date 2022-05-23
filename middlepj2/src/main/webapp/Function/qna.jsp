@@ -16,9 +16,16 @@
 		</div>
 		<br>
 		<br>
+		<c:if test="${!empty delete }">
+			<script>
+			alert(${delete });
+			</script>
+			<%request.getSession().removeAttribute("delete"); %>
+		</c:if>
  <c:choose> 
-	<c:when test="${empty list }"><h3>문의글 정보가 없습니다</h3></c:when>
-	
+	<c:when test="${empty list }"><h3>문의글 정보가 없습니다</h3>
+	<a href="view/qnaWrite.jsp?id=${Uid }">글쓰기</a>
+	</c:when>
 	<c:otherwise>
 	<h3>고객센터</h3> 
 	<table border="1">
@@ -33,14 +40,14 @@
 	 </thead>
 	 <tbody>
 		 <c:forEach var="list" items="${list }" >
-			<tr><td>${list.qnaCategory }</td><td>${list.qnaNo }</td><td><a href="detail.do?qnaNo=${list.qnaNo }">${list.qnaTitle }</a></td><td>${list.qnaWrite }</td><td>${list.qnaDate }</td>
+			<tr><td>${list.qnaCategory }</td><td>${list.qnaNo }</td><td><a href="detail.do?qnaNo=${list.qnaNo }&id=${Uid }">${list.qnaTitle }</a></td><td>${list.qnaWrite }</td><td>${list.qnaDate }</td>
 			</tr>
 		</c:forEach>
 		
 	 </tbody>
 	</table>
 
-	<a href="view/qnaWrite.jsp">글쓰기</a>
+	<a href="view/qnaWrite.jsp?id=${Uid }">글쓰기</a>
 	 </c:otherwise>
 	</c:choose>  
 	

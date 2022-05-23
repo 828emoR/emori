@@ -13,12 +13,13 @@ public class qnaDeleteControl implements Control{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = request.getParameter("id");
+		int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));
 		
 		qnaService qnadeleteservice = new qnaService();
-		qnadeleteservice.deleteQna(id);
-		
-		request.getRequestDispatcher("view/qnaDelete.jsp").forward(request, response);
+		qnadeleteservice.deleteQna(qnaNo);
+		request.setAttribute("delete", "삭제되었습니다");
+		request.getSession().setAttribute("delete", "삭제되었습니다");
+		response.sendRedirect("qna.do");
 		
 	}
 

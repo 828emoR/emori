@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import middle.vo.ReviewVO;
+import middle.vo.UserOrderVO;
 
 public class ReviewDAO extends DAO {
 	
@@ -19,17 +20,17 @@ public class ReviewDAO extends DAO {
 	public void insertReview(ReviewVO review) {
 		conn = getConnect();
 		String sql = "insert into review "
-				+ "values(review_seq, ?, ?, ?, ?, ?, ?, sysdate, ?, ?)";
+				+ "values(review_seq, ?, ?, ?, ?, ?, sysdate, ?, ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, review.getOrderCode());
-			psmt.setInt(2, review.getProductCode());
-			psmt.setString(3, review.getId());
-			psmt.setString(4, review.getReviewPass());
-			psmt.setString(5, review.getReviewTitle());
-			psmt.setString(6, review.getReviewContent());
-			psmt.setString(7, review.getReviewImg());
-			psmt.setInt(8, review.getReviewStar());
+
+			psmt.setInt(1, review.getProductCode());
+			psmt.setString(2, review.getId());
+			psmt.setString(3, review.getReviewPass());
+			psmt.setString(4, review.getReviewTitle());
+			psmt.setString(5, review.getReviewContent());
+			psmt.setString(6, review.getReviewImg());
+			psmt.setInt(7, review.getReviewStar());
 			
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 등록");
@@ -38,6 +39,31 @@ public class ReviewDAO extends DAO {
 		} finally {
 			disconnect();
 		}
+	}
+	
+	// 로그인 한 사용자가 구매한 상품 조회
+	public List<UserOrderVO> searchOrder(String uid) {
+		conn = getConnect();
+		List<UserOrderVO> list = new ArrayList<UserOrderVO>();
+		String sql = "select product_name, product_code from user_order where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, uid);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				UserOrderVO vo = new UserOrderVO();
+				vo.setProductCode(rs.getInt("product_code"));
+				vo.setProductName(rs.getString("product_name"));
+				
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return list;
+		
 	}
 	
 	// 리뷰수정
@@ -99,7 +125,6 @@ public class ReviewDAO extends DAO {
 			while(rs.next()) {
 				ReviewVO vo = new ReviewVO();
 				vo.setReviewCode(rs.getInt("review_code"));
-				vo.setOrderCode(rs.getInt("order_code"));
 				vo.setProductCode(rs.getInt("product_code"));
 				vo.setId(rs.getString("writer"));
 				vo.setReviewPass(rs.getString("review_pw"));

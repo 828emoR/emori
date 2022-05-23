@@ -11,10 +11,12 @@ String Upw = request.getParameter("Upw");
 Markservice service = new Markservice();
 service.checkUser(Uid, Upw);
 int r = service.checkUser(Uid, Upw);
+String a = "";
 System.out.println(r);
 if(r==1) {
    session.setAttribute("Uid", Uid);
    session.setAttribute("Upw", Upw);
+   
    response.sendRedirect("../index.jsp");
 }else if(r==0) {%>
    <script>

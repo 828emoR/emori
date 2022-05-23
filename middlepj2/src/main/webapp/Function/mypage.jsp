@@ -19,19 +19,26 @@
         <caption>마이페이지</caption>
         <thead>
             <tr>
-                <th>주문번호</th>
-                <th>구매날짜</th>
-                <th>주소</th>
+                <th>상품사진</th>
                 <th>상품이름</th>
+                <th>구매자</th>
+                <th>상품금액</th>
+                <th>수량</th>
+                <th>날짜</th>
+                <th>주소</th>
                 <th>전화번호</th>
             </tr>
         </thead>
    <tbody>
       <c:forEach items="${list }" var="list">
-        <tr><td>${list.uorderCode }</td>
+        <tr>
+        <td><img src="upload/${list.productImg }" width="50"></td>
+        <td>${list.productName }</td>
+        <td>${list.uorderName }</td>
+        <td>${list.productPrice }</td>
+        <td>${list.amount }</td>
         <td>${list.uorderDate }</td>
         <td>${list.uorderAddress }</td>
-        <td>${list.uorderName }</td>
         <td>${list.uorderTel }</td>
         
         
@@ -40,6 +47,7 @@
    
         </tbody>
     </table>
+    
     <form action="${pageContext.servletContext.contextPath }/search.do" method="get">
         
         <input type="hidden" name="job" value="modify">
@@ -54,7 +62,10 @@
         <input type="submit" value="탈퇴">
     </form>
 
+<form action="${pageContext.servletContext.contextPath }/index.jsp">
 
+<input type="submit" value="홈">
+</form>
     
 
 </body>
