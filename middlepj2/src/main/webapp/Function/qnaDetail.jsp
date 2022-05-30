@@ -2,9 +2,22 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>레이아웃</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Bootstrap icons-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css"/>
 <script>
 	function deleteQna(no) {
 		var confirmed = confirm("삭제하시겠습니까?");
@@ -20,9 +33,9 @@
 <body>
 <div id="container">
 <!-- Header -->
-		<div id="head">
-			<jsp:include page="header.jsp"/>
-		</div>
+<jsp:include page="/WEB-INF/view/nav.jsp" flush="false"/>
+
+
 		<br>
 		<br>
 <c:choose>
@@ -74,8 +87,6 @@
 		
 		
 <!-- Footer -->
-		<div id="foot">
-			<jsp:include page="footer.jsp"/>
-		</div>		
+<jsp:include page="/WEB-INF/view/footer.jsp" flush="false"/>
 </body>
 </html>
