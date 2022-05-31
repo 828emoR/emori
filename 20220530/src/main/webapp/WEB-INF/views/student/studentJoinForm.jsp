@@ -19,9 +19,9 @@
 						<tr>
 							<th width="150">아이디</th>
 							<td width="380"><input type="email" id="id" name="id"
-								required="required">&nbsp; <!--id= 자바 스크립트에서 사용, name= 자바에서 사용-->
-								<button type="button" onclick="idCheck()">중복체크</button> <input
-								type="hidden" id="checkId" value="N"></td>
+								required="required">&nbsp;
+								<button type="button" id="btn" onclick="idCheck()">중복체크</button> 
+								<input type="hidden" id="checkId" value="N"></td>
 						</tr>
 						<tr>
 							<th width="150">패스워드</th>
@@ -30,7 +30,7 @@
 						</tr>
 						<tr>
 							<th width="150">패스워드 확인</th>
-							<td><input type="password" id="password" name="password"
+							<td><input type="password" id="password1" name="password1"
 								required="required"></td>
 						</tr>
 						<tr>
@@ -62,8 +62,7 @@
 				</div>
 				<br />
 				<div>
-					<input type="submit" value="회원등록">&nbsp;&nbsp; <input
-						type="reset" value="취소">
+					<input type="submit" value="회원등록">&nbsp;&nbsp; <input type="reset" value="취소">
 
 				</div>
 			</form>
