@@ -19,9 +19,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
+		logger.info("여어, {} 어서오고 .", locale);
 		
 		return "home/home";
 	}
-	
+	@RequestMapping("/home.do")
+	public String home() {
+		return "home/home";
+	}
 }
