@@ -37,7 +37,7 @@
 			</thead>
 			<tbody>
 				<c:if test="${not empty notices}">
-					<c:forEach items="${notices }" var="notice">
+					<c:forEach items="${notices }" var="n">
 					<tr>
 						<td>${n.noticeId }</td>
 						<td>${n.noticeName }</td>

@@ -37,11 +37,11 @@ public class NoticeController {
 	public String noticeInsert(NoticeVO vo, MultipartFile file) {
 		String fileName = file.getOriginalFilename();
 		if(fileName != null) {
-			File target = new File(saveDir, fileName);
+			File target = new File(saveDir,fileName);
 			vo.setNoticeAttech(fileName); // 파일명
 			vo.setNoticeDir(target.toString()); //실제저장 담고
 			try {
-				FileCopyUtils.copy(file.getBytes(), target);//실제 파일을 저장
+				FileCopyUtils.copy(file.getBytes(),target);//실제 파일을 저장
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
