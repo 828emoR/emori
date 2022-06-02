@@ -42,7 +42,7 @@
 		</insert>
 		
 		<update id="noticeUpdate" parameterType="co.emori.prj.notice.vo.NoticeVO">
-			update notice
+			UPDATE NOTICE
 			<set>
 				<if test = "noticeName != null">NOTICE_NAME = ${noticeName},</if>
 				<if test = "noticeTitle != null">NOTICE_TITLE = ${noticeTitle},</if>
