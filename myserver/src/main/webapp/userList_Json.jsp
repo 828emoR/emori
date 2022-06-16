@@ -46,9 +46,8 @@
 				return;
 
 			$.ajax({
-				url:conPath + '/userDelete',
-				data : {id:userId},
-				type:'get',
+				url:conPath + '/user/'+ userId,
+				type:'delete',
 				dataType:'json'
 			}).done(function(xhr) {
 				console.log(xhr.result);
@@ -65,11 +64,10 @@
 		$('body').on('click','#btnSelect',function(){
 			//var userId = $(event.target).closest('tr').find('#hidden_userId').val();
 			//특정 사용자 조회
-			var userId = $(this).closest("tr").data()
+			var userId = $(this).closest("tr").data("id")
 			$.ajax({
-				url:conPath + '/userSelect',
-				data : {id:userId},
-				type:'GET',
+				url:conPath + '/user/'+userId,
+				//type:'GET',생략가능
 				dataType:'json'
 			}).done(
 				userSelectResult
@@ -96,10 +94,11 @@
 			var password = $('input:text[name="password"]').val();
 			var role = $('select[name="role"]').val();		
 			$.ajax({ 
-			    url: conPath + '/userUpdate', 
-			    type: 'POST', 
-			    dataType: 'json', 
-			    data: $("#form1").serialize()//질의 문자열
+			    url: conPath + '/user', 
+			    type: 'Put',//대소문자 구분 없음 , put 타입일 경우 json밖에 못보냄.
+			    dataType: 'json', 	//응답 결과가 json
+			    contentType: 'application/json',//요청하는 파라미터가 json
+			    data: JSON.stringify ({id, name, password, role}) //$("#form1").serialize()//질의 문자열
 			}).done( function(data) { 
 			        userList();
 			}).fail( function(xhr, status, message) { 
@@ -117,9 +116,9 @@
 			var password = $('input:text[name="password"]').val();
 			var role = $('select[name="role"]').val();		
 			$.ajax({ 
-			    url: conPath + '/userInsert',  
+			    url: conPath + '/user',  
 			    type: 'POST',  /*type 대신 method 써도 무방함.*/
-			    data: { id: id, name:name,password:password, role:role },
+			    data: {id, name, password, role},
 			    dataType: 'json', /*data type 은 항상 json으로.*/
 			 }).done( function(response) {
 			    		userList();
@@ -159,7 +158,7 @@
 	//사용자 목록 조회 요청
 	function userList() {
 		$.ajax({
-			url:conPath + '/userSelectAll',
+			url:conPath + '/user',
 			type:'GET',
 			dataType:'json'
 		/* }).fail(function(xhr,status,msg){

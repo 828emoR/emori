@@ -185,7 +185,7 @@ function todoInsert(){
 
 function todoList(){
 		$.ajax({
-			url: 'todoSelect'
+			url: 'todoSelect',
 		dataType:'json'
 		}).done(function(list){
 			//ul 내용을 삭제 

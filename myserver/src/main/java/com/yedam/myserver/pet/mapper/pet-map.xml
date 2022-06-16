@@ -4,8 +4,10 @@
 
 <!-- pet 전체조회 --> 
 <select id="findPetAll" resultType="petVO">
-	SELECT *
-	  FROM PET
+	SELECT p.* , (SELECT PRICE 
+				FROM ADOPT A 
+				WHERE P.ID = A.ID) PRICE
+	  FROM PET P
 	 ORDER BY ID
 </select>
 

@@ -54,4 +54,12 @@
 	 order by a.department_id 
 </select>
 
+<select id="empStat" resultType="map"> <!-- map.put("deptId", 10)  -->
+	SELECT DEPARTMENT_ID  "deptId"
+	, COUNT(*) 			  "cnt"
+	FROM EMPLOYEES
+	WHERE DEPARTMENT_ID IS NOT NULL
+	GROUP BY DEPARTMENT_ID
+</select>
+
 </mapper>

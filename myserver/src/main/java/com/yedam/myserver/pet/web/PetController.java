@@ -22,7 +22,7 @@ public class PetController {
 		return mapper.findPetAll();
 	}
 
-	//분양정보 등록
+	//분양상태 조회
 	@GetMapping("/adoptSelect")
 	public List<AdoptVO> adoptSelectList() {
 		return mapper.findAdoptAll();
