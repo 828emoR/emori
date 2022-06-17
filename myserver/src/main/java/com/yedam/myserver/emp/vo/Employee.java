@@ -37,6 +37,9 @@ public class Employee {
 	private String first_name;
 	private Integer employee_id;
 	private String department_name;
+	private String location_id;
+	
+	private Departments department;
 	
 	
 }

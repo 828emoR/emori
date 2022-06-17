@@ -3,7 +3,7 @@
 <mapper namespace="com.yedam.myserver.pet.mapper.PetMapper">
 
 <!-- pet 전체조회 --> 
-<select id="findPetAll" resultType="petVO">
+<select id="findPetAll" resultType="PetVO">
 	SELECT p.* , (SELECT PRICE 
 				FROM ADOPT A 
 				WHERE P.ID = A.ID) PRICE
