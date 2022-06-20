@@ -140,7 +140,7 @@ input {
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
-&(function(){
+$(function(){
 		todoList();
 		todoInsert();
 		todoDelete();
@@ -150,58 +150,85 @@ input {
 
 function todoUpdate(){
 	$("#myUL").on("click", ".li", function(){
+		if(event.target.nodeName != "li")
+			return;
+		
+		let no = $(this).data("no");
+		let todoyn = $(this).hasClass("checked")? "0" : "1";
+		let li = $(this);
 		$.ajax({
-			url: '',
-			type:'',
-			dataType:'json'
-	}
-}
-
-
-function todoDelete(){
-	$("#myUL").on("click", ".close", function(){
-		$.ajax({
-			url: 'todoDelete',
-			
-			dataType:'json'
+			url: 'todoUpdate',
+			data:{no. todoyn}
+		}).done(function(){
+			li.toggleClass("checked")
+		})
 	})
 }
 
+   
+function todoDelete(){
+	$("#myUL").on("click", "span", function(){
+		let no = $(this).parent().data("no");
+		$.ajax({
+			url: 'todoDelete',
+			data : {no : no}
+	   }).done(function(result){
+		//todoList()
+		//result.no
+		//li 태그 삭제
+		$('[data-no='+result.no+']').remove();
+		//li.remove();
+		})
+	})	
+	}
+	
+//remove=태그 자체를 삭제, empty=태그속 내용만 삭제
+
 function todoInsert(){
+	$("#myImput").on("keypress", function(){
+		if (event.keyCode == 13) 
+			$(".addBtn").click();
+	})
 	$(".addBtn").on("click", function(){
-		var contents = $('#myInput').val();
+		let contents = $("#myInput").val();
+		if(contents == ""){
+			alert("내용입력")
+			return;
+		}
 		$.ajax({
 			url : 'todoInsert',
 			data : {contents },
-			dataType : 'json',
-			success:function(resp){
-				if(resp.result == true){
-					todoList();
-				}
-			}
-		});
-	});
+		}).done(function(temp){
+			$("#myInput").val("");
+		makeLi(temp);
+		})
+	})
 }
 
 function todoList(){
 		$.ajax({
 			url: 'todoSelect',
-		dataType:'json'
+			dataType:'json'
 		}).done(function(list){
 			//ul 내용을 삭제 
 			$("ul").empty();
-					for(test of list){
-						val li = $("<li>").attr("data-no", li.no)
-						.attr("todoyn", 1)
-						.html(`${temp.contents}<span class="close">X</span>`)
-						if(temp.todoyn == '1'{
-							li.addClass("checked")
-						}
-						$("#myUL").append(li);
-					}
+					for(temp of list){
+					makeLi(temp);
+				}	
 		});
-
 }
+
+function makeLi(temp){
+		var li = $("<li>").attr("data-no", temp.no)
+						  .attr("todoyn", 1)
+		  				  .html(`\${temp.contents}<span class="close">X</span>`)
+	if(temp.todoyn == '1'){
+		li.addClass("checked")
+	}
+		$("#myUL").append(li);
+}
+
+
 </script>
 </body>
 </html>

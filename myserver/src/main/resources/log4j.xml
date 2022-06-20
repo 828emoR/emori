@@ -2,13 +2,15 @@
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
+
 	<!-- Appenders -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p: %d %c{2} - %L - %m%n" />
+			<param name="ConversionPattern" value="%-5p: %d{MM-dd hh:mm} %c(%M) - %L - %m%n" />
 		</layout>
 	</appender>
+	
 	<logger name="jdbc.connection">
 		<level value="warn" />
 	</logger>
@@ -20,9 +22,9 @@
 	</logger>
 	
 	<!-- Application Loggers -->
-	<logger name="com.yedam.myserver">
+<!-- 	<logger name="com.yedam.myserver">
 		<level value="warn" />
-	</logger>
+	</logger> -->
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
@@ -43,7 +45,7 @@
 
 	<!-- Root Logger   fetal < error < info  < debug < trace  -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	
