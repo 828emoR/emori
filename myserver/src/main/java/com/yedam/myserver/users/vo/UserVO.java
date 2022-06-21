@@ -1,6 +1,18 @@
 package com.yedam.myserver.users.vo;
 
-public class UserVO {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import lombok.Data;
+
+@Data
+public class UserVO implements UserDetails{
+	
 	
 	private String id;
 	private String password;
@@ -36,5 +48,37 @@ public class UserVO {
 		return "UserVO [id=" + id + ", password=" + password + ", name=" + name
 				+ ", role=" + role + "]";
 	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> auth = new ArrayList<>();
+		auth.add(new SimpleGrantedAuthority("ROLE_"+ this.role.toUpperCase()));
+		return auth;
+	}
+	@Override
+	public String getUsername() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+	@Override
+	public boolean isAccountNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
 	
 }

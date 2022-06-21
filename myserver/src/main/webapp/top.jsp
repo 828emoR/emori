@@ -8,15 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<sec:authorize access="isAnonymous()">
-	로그인
-</sec:authorize>
+<sec:authentication property="principal" var="user"/>
 <sec:authorize access="isAuthenticated()">
-	로그인 유저 ${user.username}
-	<form action="logout" method="post">
-		<button>로그아웃</button>
-	</form>
+<form method = "post" action="${pageContext.request.contextPath}/logout">
+	<sec:csrfInput/>
+	<button>${user.id} 로그아웃</button>
+</form>
 </sec:authorize>
+<sec:authorize access="isAnonymous()">
+	<a href="login.jsp">로그인</a>
+</sec:authorize>
+
 
 	<h1>톱 페이지입니다.</h1>
 	<ul>

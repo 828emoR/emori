@@ -32,7 +32,7 @@
 	</logger>
 	
 	<logger name="org.springframework.beans">
-		<level value="debug" />
+		<level value="error" />
 	</logger>
 	
 	<logger name="org.springframework.context">
