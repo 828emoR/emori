@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<tr><th>번호</th><th>이름</th></tr>
+	
+	<tr th:each="vo : ${list}">
+		<td th:text="${vo.id}">1</td><td th:text="${vo.name}">홍길동</td>
+	</tr>
+</table>
+</body>
+</html>
